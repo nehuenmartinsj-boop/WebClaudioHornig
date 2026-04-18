@@ -230,7 +230,7 @@
                 });
 
                 populateMonthFilter();
-                updateStats(masterclass.length, checkout.length, agenda.length);
+                updateStats();
                 renderTable();
             } catch (error) {
                 console.error('Error:', error);
@@ -264,36 +264,28 @@
             select.value = currentValue;
         }
 
-        function updateStats(masterclass, checkout, agenda) {
-            const filterMonth = document.getElementById('filterMonth').value;
-            const filterType = document.getElementById('filterType').value;
+        function updateStats() {
+            const filterMonth = document.getElementById('filterMonth')?.value || 'all';
+            const filterType = document.getElementById('filterType')?.value || 'all';
             
-            if (filterMonth === 'all' && filterType === 'all') {
-                const total = masterclass + checkout + agenda;
-                document.getElementById('totalCount').textContent = total;
-                document.getElementById('masterclassCount').textContent = masterclass;
-                document.getElementById('checkoutCount').textContent = checkout;
-                document.getElementById('agendaCount').textContent = agenda;
-            } else {
-                const filtered = allData.filter(row => {
-                    const tipo = row.tipo;
-                    if (filterType !== 'all' && tipo !== filterType) return false;
-                    if (filterMonth !== 'all') {
-                        const str = row['Marca temporal'] || row['Timestamp'] || '';
-                        const parts = str.match(/(\d+)\/(\d+)\/(\d+)/);
-                        if (!parts || `${parts[3]}-${parts[2].padStart(2, '0')}` !== filterMonth) return false;
-                    }
-                    return true;
-                });
-                
-                const m = filtered.filter(r => r.tipo === 'masterclass').length;
-                const c = filtered.filter(r => r.tipo === 'checkout').length;
-                const a = filtered.filter(r => r.tipo === 'agenda').length;
-                document.getElementById('totalCount').textContent = filtered.length;
-                document.getElementById('masterclassCount').textContent = m;
-                document.getElementById('checkoutCount').textContent = c;
-                document.getElementById('agendaCount').textContent = a;
-            }
+            const filtered = allData.filter(row => {
+                const tipo = row.tipo;
+                if (filterType !== 'all' && tipo !== filterType) return false;
+                if (filterMonth !== 'all') {
+                    const str = row['Marca temporal'] || row['Timestamp'] || '';
+                    const parts = str.match(/(\d+)\/(\d+)\/(\d+)/);
+                    if (!parts || `${parts[3]}-${parts[2].padStart(2, '0')}` !== filterMonth) return false;
+                }
+                return true;
+            });
+            
+            const m = filtered.filter(r => r.tipo === 'masterclass').length;
+            const c = filtered.filter(r => r.tipo === 'checkout').length;
+            const a = filtered.filter(r => r.tipo === 'agenda').length;
+            document.getElementById('totalCount').textContent = filtered.length;
+            document.getElementById('masterclassCount').textContent = m;
+            document.getElementById('checkoutCount').textContent = c;
+            document.getElementById('agendaCount').textContent = a;
         }
 
         function getNombre(row, tipo) {
