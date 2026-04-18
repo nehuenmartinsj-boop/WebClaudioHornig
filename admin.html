@@ -215,7 +215,7 @@
                         if (!str) return 0;
                         const parts = str.match(/(\d+)\/(\d+)\/(\d+)\s+(\d+):(\d+):(\d+)/);
                         if (parts) {
-                            return new Date(parts[3], parts[1] - 1, parts[4], parts[5], parts[6]);
+                            return new Date(parts[3], parts[2] - 1, parts[1], parts[4], parts[5], parts[6]);
                         }
                         return new Date(str);
                     };
