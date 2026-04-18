@@ -232,7 +232,9 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
           telefono: phone
         }, 'masterclass');
 
-        fetch('/api/send-confirmation', {
+        const API_URL = window.location.origin + '/api/send-confirmation';
+        
+        fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email })

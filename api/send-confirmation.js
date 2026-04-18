@@ -1,18 +1,21 @@
-import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 const resend = new Resend('re_7DP8P81U_NvNxPZU3JoX3qkVNth1mgD7z');
 
 const MASTERCLASS_MEET_LINK = 'https://meet.google.com/abc-defg-hij';
 
-export async function POST(request) {
-  try {
-    const { email, name } = await request.json();
-    
-    if (!email || !name) {
-      return NextResponse.json({ error: 'Email y nombre son requeridos' }, { status: 400 });
-    }
+module.exports = async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
+  const { email, name } = req.body;
+  
+  if (!email || !name) {
+    return res.status(400).json({ error: 'Email y nombre son requeridos' });
+  }
+
+  try {
     const data = await resend.emails.send({
       from: 'Claudio Hornig <onboarding@resend.dev>',
       to: [email],
@@ -35,9 +38,9 @@ export async function POST(request) {
       `
     });
 
-    return NextResponse.json({ success: true, data });
+    res.status(200).json({ success: true, data });
   } catch (error) {
     console.error('Error sending email:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    res.status(500).json({ error: error.message });
   }
-}
+};
