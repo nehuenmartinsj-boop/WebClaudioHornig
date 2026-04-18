@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Camino de la Sanación - Serene Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f3",
+                        "background": "#f9f9f9",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#00201c",
+                        "inverse-primary": "#9dcbf4",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed-dim": "#a0d0c6",
+                        "outline": "#72787f",
+                        "primary-fixed-dim": "#9dcbf4",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#614018",
+                        "tertiary-fixed-dim": "#efbd8a",
+                        "secondary-container": "#b9e9e0",
+                        "primary-fixed": "#cce5ff",
+                        "secondary-fixed": "#bcece2",
+                        "on-primary-fixed-variant": "#154b6d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#2c1700",
+                        "on-background": "#1a1c1c",
+                        "outline-variant": "#c1c7cf",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-container": "#92c0e9",
+                        "primary": "#003857",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary": "#4c2e07",
+                        "on-tertiary-container": "#e3b280",
+                        "inverse-surface": "#2f3131",
+                        "on-primary-fixed": "#001e31",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#1f4e47",
+                        "on-surface": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#326286",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#3d6b63",
+                        "surface-dim": "#dadada",
+                        "secondary": "#39665f",
+                        "tertiary-fixed": "#ffdcbc",
+                        "tertiary-container": "#66441c",
+                        "primary-container": "#1b4f72",
+                        "on-surface-variant": "#41474e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Noto Serif', serif; }
+        .gradient-primary-btn {
+            background: linear-gradient(135deg, #003857 0%, #1b4f72 100%);
+        }
+        .organic-shape {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .ambient-shadow {
+            box-shadow: 0 12px 40px rgba(26, 28, 28, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-nav shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-headline font-bold text-primary">
+                Claudio Hornig
+            </div>
+<nav class="hidden md:flex space-x-8 items-center font-headline tracking-tight text-lg">
+<a class="text-slate-600 hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
+<a class="text-slate-600 hover:text-primary transition-all duration-300" href="masterclass.html">Masterclass</a>
+<a class="text-primary font-semibold border-b-2 border-secondary pb-1" href="curso.html">Clases</a>
+<a class="text-slate-600 hover:text-primary transition-all duration-300" href="agenda.html">Agenda</a>
+</nav>
+<div class="hidden md:block">
+<a class="gradient-primary-btn text-on-primary px-6 py-3 rounded-xl font-body font-medium hover:opacity-90 transition-opacity shadow-sm" href="agenda.html">
+                    Reservar Cita
+                </a>
+</div>
+<!-- Mobile menu button (visual only) -->
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="pt-32 pb-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
+<!-- Decorative organic shape background -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-secondary-container opacity-40 organic-shape -z-10 blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-tertiary-fixed opacity-30 organic-shape -z-10 blur-2xl transform -translate-x-1/2 translate-y-1/2"></div>
+<div class="md:w-1/2 space-y-8 z-10">
+<span class="text-secondary font-medium tracking-wide uppercase text-sm">Curso Online Exclusivo</span>
+<h1 class="text-5xl md:text-6xl font-headline text-primary leading-tight tracking-tight">
+                El Camino de la Sanación
+            </h1>
+<p class="text-lg font-body text-on-surface-variant leading-relaxed max-w-lg">
+                Un viaje guiado por Claudio Hornig para reconectar con tu esencia, liberar cargas del pasado y abrazar una vida de paz y plenitud emocional.
+            </p>
+<div class="pt-4 flex flex-col sm:flex-row gap-4">
+<a class="gradient-primary-btn text-on-primary px-8 py-4 rounded-xl text-center font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" href="#pricing">
+                    Inscribirme ahora
+                </a>
+<a class="px-8 py-4 rounded-xl text-center font-medium text-primary border border-outline-variant hover:bg-surface-container transition-colors duration-300" href="#curriculum">
+                    Ver el currículum
+                </a>
+</div>
+</div>
+<div class="md:w-1/2 relative z-10 w-full">
+<div class="aspect-[4/5] rounded-t-full rounded-b-xl overflow-hidden ambient-shadow relative">
+<img alt="Claudio Hornig - Psicólogo" class="object-cover w-full h-full object-center transform hover:scale-105 transition-transform duration-700" data-alt="Retrato profesional de Claudio Hornig sonriendo en un entorno cálido, estilo editorial de alta gama" src="foto-claudio.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+</div>
+<!-- Floating quote card -->
+<div class="absolute -bottom-8 -left-8 md:-left-16 bg-surface-container-lowest p-6 rounded-xl ambient-shadow max-w-xs hidden sm:block border border-outline-variant/10">
+<p class="font-headline italic text-primary text-sm">"La sanación no es un destino, es un retorno a casa."</p>
+<p class="text-xs font-medium text-outline mt-2">— Claudio Hornig</p>
+</div>
+</div>
+</section>
+<!-- Soft Transition Section -->
+<div class="w-full h-24 bg-gradient-to-b from-background to-surface-container-low"></div>
+<!-- Curriculum Grid Section -->
+<section class="py-24 px-8 bg-surface-container-low" id="curriculum">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 max-w-2xl mx-auto space-y-4">
+<h2 class="text-4xl font-headline text-primary tracking-tight">El Viaje de Transformación</h2>
+<p class="font-body text-on-surface-variant">Explora los seis módulos diseñados cuidadosamente para facilitar una profunda sanación interior.</p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-outline-variant/20">
+<div class="h-48 overflow-hidden relative">
+<img alt="Module 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract soft focus image of light filtering through green leaves, symbolizing new beginnings and inner child reconnection, calming atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCye7fjTYt3OWmAmHO4gGbqwhd7LpwdUGDh9X6nKpUnH-lVbM35DdR72ibWdyauKHn8UnF6FSDpI8zA63hslM2vrCrowlKaApJTOxJchTuAq_ACzQnZRqZxg5V3TsLXt5JqL3puzgpn60kbej9IcM0C8BYKYNUaLAskF8XPgAZyNCypcR1dW6tgLNIVRwh-1ry0klDczxixH09F5TTkygwR9p6bfjiQVzySvBmIqFLdYqa266f2l8DYORblFg8HMLyBImMwudDTF-A"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 1</span>
+<h3 class="font-headline text-xl text-primary mb-3 leading-snug">Reencuentro con el Niño Interior</h3>
+<p class="font-body text-sm text-on-surface-variant flex-grow">Aborda las heridas primarias y aprende a dialogar con esa parte tuya que necesita compasión y escucha activa.</p>
+<div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
+<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+                            1.5 Horas
+                        </div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-outline-variant/20">
+<div class="h-48 overflow-hidden relative">
+<img alt="Module 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist abstract composition of broken chains morphing into birds flying free against a soft warm sunset sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKu2c5fo6UXI4DbcSlrT2hMfJ2XWzw2BzzY0sUMnOaB56T7Ggmbonfd_1QeE0xRmPcI-dUSIj0GC37bhCsULrpIXKg4XoE03_I6BjA2HUgdh8UpDr7H4OnZ_eDP16Msro3GnIYo03qDJAgoPN2DZhatH29O-YzppUOFuD09F-2B5t5ljP_KT_im2JBen2yuFZF4ogE9UiGP2JuaweUrIixn8pspBiRQzGDxTbr33ENmLcf1gAKgIFh5tWK-nMMmSlZTksy8QBGEXo"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 2</span>
+<h3 class="font-headline text-xl text-primary mb-3 leading-snug">Rompiendo Cadenas del Pasado</h3>
+<p class="font-body text-sm text-on-surface-variant flex-grow">Identifica y disuelve los patrones heredados y creencias limitantes que obstaculizan tu bienestar actual.</p>
+<div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
+<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+                            2.0 Horas
+                        </div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-outline-variant/20 lg:col-span-1 md:col-span-2">
+<div class="h-48 overflow-hidden relative">
+<img alt="Module 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of rippling water with a single drop hitting the surface creating concentric circles, deep calm blue and sage tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZLr2EcBEgpCh1hq5Ct_0iz1fcrxzkjXmVvD4jMCQ3StytXGWEn3c-FxhmE5bvjR-NaSiOmFehTkzwc9owpg6f0txkzlXGz4KnA3B2YkZirivtRix3Qdo63lAe4iFImpNGjmKEGyf0dA62K-o2LS6lzYpGQTa0WGHTWJWFmLZ5sES4IOjXj9oQOlv6wfVzHws-UnCePIgLTVG9CEzqjj0qMw98KwXr9DvY_ZfOE20zuI69jRf1cNJ8QRLttTjgwCNYH7s0_tFTaig"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 3</span>
+<h3 class="font-headline text-xl text-primary mb-3 leading-snug">La Alquimia del Perdón</h3>
+<p class="font-body text-sm text-on-surface-variant flex-grow">Aprende que perdonar no es olvidar, sino liberarte del peso emocional para recuperar tu energía vital.</p>
+<div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
+<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+                            1.5 Horas
+                        </div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-outline-variant/20">
+<div class="h-48 overflow-hidden relative">
+<img alt="Module 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Gentle ocean waves washing over smooth stones on a serene beach, soft pastel twilight colors, peaceful and grounding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwv6bbSSb7V-0pmUHpRlhfrlwCXNAl5UvUhQGJVKPS-zgMcvms1gUPNV1fRD5_M9_vUFJzEEz8M7dr0BXVY1xng_EZJIGi8SBsWpe0h4dPHixDQqKoOY8-dSL0vyFF7QFVogF4ctcziFyllDuFsNHFmA9sxn7qPwLWtsdxb2g-Kss7wKO-al1-nMKaO4V1BRWEPABOowXafzIIMI0zAE2lluU1-FAQFtPd0KArAMP_SSVnpjat3Aol2qIRVLBONnl_AnfTzdlIW7Q"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 4</span>
+<h3 class="font-headline text-xl text-primary mb-3 leading-snug">Gestión de la Ansiedad</h3>
+<p class="font-body text-sm text-on-surface-variant flex-grow">Técnicas somáticas y herramientas prácticas para anclarte en el presente cuando la mente se acelera.</p>
+<div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
+<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+                            2.5 Horas
+                        </div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-outline-variant/20">
+<div class="h-48 overflow-hidden relative">
+<img alt="Module 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sunlight illuminating a solitary tree standing strong in a misty valley, symbolizing resilience and self discovery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSlm0nAG26FF6BM66ohFENJfnrFxzxq1lkXGngWwQdultgq5LWd-DrLOFzXOaICZ_4OYivZ7et6gEAhu-ga6KmNMOs_LIlYMvXkUe0SWiA6KhCsZeTmuSLv95G0c_gJV_nWuDfm5dQpk8iDA8DswO3-Mf1E4iaePzPF716VuaHuEBv1iqRVWqhpTi9FdYMTPxmdJ0rH5qSwn1yR8rhLjbiEf7u1ynme8INGcv3QAS8FcuvBzESlGs6AJpGosul7P7O1Nf4YSyccpc"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 5</span>
+<h3 class="font-headline text-xl text-primary mb-3 leading-snug">Redescubriendo el Amor Propio</h3>
+<p class="font-body text-sm text-on-surface-variant flex-grow">Cultiva una relación de respeto y nutrición contigo mismo, estableciendo límites sanos sin culpa.</p>
+<div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
+<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+                            2.0 Horas
+                        </div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow flex flex-col group hover:-translate-y-2 transition-transform duration-300 border border-outline-variant/20">
+<div class="h-48 overflow-hidden relative">
+<img alt="Module 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract soft focus horizon line where calm water meets sky, seamless blending of muted blues and sage greens, expansive and open" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvUve4li4gb-lP51VNaG6BYc7y9bbO493Z3M3ibw7KSQaKV8I330kSZytJ6MhBvoABXrWnyVaCHqNaQHUag1O2sQSkFtUfaLHhsk3pGCMLnhFujDYpk3eCao2lvwgUrYl76jqeZD7FOkypykxtsIMZWuRj_yt5MDZxQV5mORr9YMQvDkTt-H55WAScPDyWoJgzISv1gfeKhvBSSrKUcs8QAKkrmhZK2ydh98XJh50-rUB_Ml3GPF_axNt-Vuf2bxQk_GC7jUES3Jg"/>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 6</span>
+<h3 class="font-headline text-xl text-primary mb-3 leading-snug">Integración y Propósito</h3>
+<p class="font-body text-sm text-on-surface-variant flex-grow">Consolida tu aprendizaje y traza un mapa claro para sostener tu bienestar emocional a largo plazo.</p>
+<div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
+<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+                            1.5 Horas
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-32 px-8 bg-surface relative overflow-hidden" id="pricing">
+<!-- Accent blur -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary-container opacity-20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="max-w-4xl mx-auto flex flex-col lg:flex-row bg-surface-container-lowest rounded-3xl ambient-shadow overflow-hidden border border-outline-variant/10">
+<div class="p-12 lg:w-3/5 flex flex-col justify-center">
+<h2 class="text-3xl md:text-4xl font-headline text-primary mb-4">Comienza tu transformación hoy</h2>
+<p class="font-body text-on-surface-variant mb-8 leading-relaxed">Acceso de por vida a los 6 módulos, materiales de apoyo descargables, y entrada a nuestra comunidad privada de estudiantes.</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-0.5">check_circle</span>
+<span class="font-body text-sm text-on-surface">Más de 10 horas de contenido en video HD</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-0.5">check_circle</span>
+<span class="font-body text-sm text-on-surface">Ejercicios guiados de introspección</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-0.5">check_circle</span>
+<span class="font-body text-sm text-on-surface">Acceso desde cualquier dispositivo, a tu ritmo</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container p-12 lg:w-2/5 flex flex-col justify-center items-center text-center border-t lg:border-t-0 lg:border-l border-outline-variant/20">
+<span class="text-outline line-through mb-2 text-sm font-medium">Valor regular: $297 USD</span>
+<div class="flex items-baseline justify-center text-primary mb-6">
+<span class="text-5xl font-headline font-bold">$147</span>
+<span class="text-lg ml-2 font-medium">USD</span>
+</div>
+<p class="text-secondary font-medium text-sm mb-8 bg-secondary-container/50 px-4 py-1.5 rounded-full inline-block">Oferta especial de lanzamiento</p>
+<a class="w-full gradient-primary-btn text-on-primary px-8 py-4 rounded-xl text-center font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" href="checkout.html">
+                    Inscribirme ahora
+                </a>
+<p class="text-xs text-outline mt-4">Garantía de devolución de 14 días.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-12 px-8 mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="text-xl font-headline font-bold text-primary dark:text-cyan-50">
+                    Claudio Hornig
+                </div>
+<div class="flex flex-wrap justify-center gap-6 text-sm font-headline">
+<a class="text-slate-500 hover:text-primary transition-colors" href="masterclass.html">Masterclass</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="curso.html">Clases</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="agenda.html">Agenda</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Privacidad</a>
+</div>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="thumb_up">thumb_up</span>
+</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+</a>
+</div>
+<div class="text-sm font-headline text-slate-500">
+                    © 2026 Claudio Hornig. Todos los derechos reservados.
+                </div>
+</div>
+</footer>
+</body></html>

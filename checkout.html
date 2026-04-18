@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Registro - Claudio Hornig</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#f3f3f3",
+                        "background": "#f9f9f9",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#00201c",
+                        "inverse-primary": "#9dcbf4",
+                        "surface": "#f9f9f9",
+                        "secondary-fixed-dim": "#a0d0c6",
+                        "outline": "#72787f",
+                        "primary-fixed-dim": "#9dcbf4",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#614018",
+                        "tertiary-fixed-dim": "#efbd8a",
+                        "secondary-container": "#b9e9e0",
+                        "primary-fixed": "#cce5ff",
+                        "secondary-fixed": "#bcece2",
+                        "on-primary-fixed-variant": "#154b6d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#2c1700",
+                        "on-background": "#1a1c1c",
+                        "outline-variant": "#c1c7cf",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-container": "#92c0e9",
+                        "primary": "#003857",
+                        "inverse-on-surface": "#f0f1f1",
+                        "tertiary": "#4c2e07",
+                        "on-tertiary-container": "#e3b280",
+                        "inverse-surface": "#2f3131",
+                        "on-primary-fixed": "#001e31",
+                        "surface-variant": "#e2e2e2",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#1f4e47",
+                        "on-surface": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#326286",
+                        "surface-container-highest": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#3d6b63",
+                        "surface-dim": "#dadada",
+                        "secondary": "#39665f",
+                        "tertiary-fixed": "#ffdcbc",
+                        "tertiary-container": "#66441c",
+                        "primary-container": "#1b4f72",
+                        "on-surface-variant": "#41474e"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Playfair Display", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background text-on-surface font-body antialiased selection:bg-secondary-container selection:text-on-secondary-container flex flex-col min-h-screen">
+    <!-- TopNavBar (Minimal Header for Checkout Context) -->
+    <header
+        class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-sky-900 dark:text-sky-400 font-serif tracking-tight text-lg shadow-sm dark:shadow-none w-full z-50">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+            <div class="text-2xl font-headline font-bold text-primary dark:text-cyan-50">
+                <a href="index.html">Claudio Hornig</a>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-headline text-lg tracking-tight">
+                <a class="text-slate-600 hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
+                <a class="text-slate-600 hover:text-primary transition-all duration-300"
+                    href="masterclass.html">Masterclass</a>
+                <a class="text-slate-600 hover:text-primary transition-all duration-300" href="curso.html">Clases</a>
+                <a class="text-slate-600 hover:text-primary transition-all duration-300" href="agenda.html">Agenda</a>
+            </div>
+            <div class="flex items-center gap-2 text-on-surface-variant text-sm font-body">
+                <span class="material-symbols-outlined text-[20px]">lock</span>
+                Pago Seguro
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow pt-24 pb-32 px-6 md:px-12 max-w-7xl mx-auto w-full">
+        <div class="mb-16">
+            <h1 class="font-headline text-4xl md:text-5xl text-primary tracking-tight mb-4">Completa tu Registro</h1>
+            <p class="text-on-surface-variant text-lg max-w-2xl">Ingresa tus datos para asegurar tu lugar en el próximo
+                programa.</p>
+        </div>
+        <form class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24" id="checkoutForm">
+            <!-- Form Column (Left, Asymmetrical Focus) -->
+            <div class="lg:col-span-7 space-y-12">
+                <!-- Billing Details Section -->
+                <section class="bg-surface-container-lowest rounded-xl p-8 lg:p-10"
+                    style="box-shadow: 0 12px 40px rgba(26, 28, 28, 0.04);">
+                    <h2 class="font-headline text-2xl text-primary mb-8 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary">person</span>
+                        Datos de Facturación
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-sm font-medium text-on-surface-variant mb-2 ml-1">Nombre
+                                Completo</label>
+                            <input
+                                class="w-full bg-surface border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 rounded-t-lg transition-colors text-on-surface placeholder-outline"
+                                id="checkoutName" placeholder="Tu nombre" required="" type="text" />
+                        </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-sm font-medium text-on-surface-variant mb-2 ml-1">Correo
+                                Electrónico</label>
+                            <input
+                                class="w-full bg-surface border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 rounded-t-lg transition-colors text-on-surface placeholder-outline"
+                                id="checkoutEmail" placeholder="tu@correo.com" required="" type="email" />
+                        </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-sm font-medium text-on-surface-variant mb-2 ml-1">Número de
+                                Teléfono</label>
+                            <input
+                                class="w-full bg-surface border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 rounded-t-lg transition-colors text-on-surface placeholder-outline"
+                                id="checkoutPhone" placeholder="+56 9 1234 5678" required="" type="tel" />
+                        </div>
+                    </div>
+                </section>
+                <!-- Payment Information Section (Bank Transfer) -->
+                <section class="bg-surface-container-lowest rounded-xl p-8 lg:p-10"
+                    style="box-shadow: 0 12px 40px rgba(26, 28, 28, 0.04);">
+                    <div class="flex justify-between items-end mb-8">
+                        <h2 class="font-headline text-2xl text-primary flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary">account_balance</span>
+                            Transferencia Bancaria
+                        </h2>
+                    </div>
+                    <div class="bg-surface-container-low/50 rounded-xl p-6 space-y-4 border border-outline-variant/20">
+                        <p class="text-sm text-on-surface-variant mb-4">Realiza tu transferencia a los siguientes datos:
+                        </p>
+
+                        <div class="grid gap-4">
+                            <div class="flex justify-between items-center group">
+                                <div>
+                                    <p class="text-xs text-outline font-medium uppercase tracking-wider">Banco</p>
+                                    <p class="text-on-surface font-medium" id="bankName">Banco de Chile</p>
+                                </div>
+                                <button class="text-secondary hover:text-primary p-2 transition-colors"
+                                    onclick="copyToClipboard('bankName')" type="button">
+                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                </button>
+                            </div>
+
+                            <div class="flex justify-between items-center group">
+                                <div>
+                                    <p class="text-xs text-outline font-medium uppercase tracking-wider">Tipo de Cuenta
+                                    </p>
+                                    <p class="text-on-surface font-medium" id="accountType">Cuenta Corriente</p>
+                                </div>
+                                <button class="text-secondary hover:text-primary p-2 transition-colors"
+                                    onclick="copyToClipboard('accountType')" type="button">
+                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                </button>
+                            </div>
+
+                            <div class="flex justify-between items-center group">
+                                <div>
+                                    <p class="text-xs text-outline font-medium uppercase tracking-wider">Número de
+                                        Cuenta</p>
+                                    <p class="text-on-surface font-medium" id="accountNumber">123456789</p>
+                                </div>
+                                <button class="text-secondary hover:text-primary p-2 transition-colors"
+                                    onclick="copyToClipboard('accountNumber')" type="button">
+                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                </button>
+                            </div>
+
+                            <div class="flex justify-between items-center group">
+                                <div>
+                                    <p class="text-xs text-outline font-medium uppercase tracking-wider">RUT</p>
+                                    <p class="text-on-surface font-medium" id="taxId">12.345.678-9</p>
+                                </div>
+                                <button class="text-secondary hover:text-primary p-2 transition-colors"
+                                    onclick="copyToClipboard('taxId')" type="button">
+                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                </button>
+                            </div>
+
+                            <div class="flex justify-between items-center group">
+                                <div>
+                                    <p class="text-xs text-outline font-medium uppercase tracking-wider">Nombre</p>
+                                    <p class="text-on-surface font-medium" id="payeeName">Claudio Hornig</p>
+                                </div>
+                                <button class="text-secondary hover:text-primary p-2 transition-colors"
+                                    onclick="copyToClipboard('payeeName')" type="button">
+                                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-outline-variant/20">
+                            <p class="text-xs text-on-surface-variant flex gap-2">
+                                <span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+                                Una vez realizada la transferencia, recibirás las instrucciones por correo. Es necesario
+                                enviar comprobante del pago para poder hacerle trazabilidad.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Order Summary Column (Right) -->
+            <div class="lg:col-span-5">
+                <div class="sticky top-32">
+                    <section class="bg-surface-container-low rounded-xl p-8 lg:p-10 mb-8">
+                        <h3 class="font-headline text-xl text-primary mb-6">Resumen del Pedido</h3>
+                        <div class="flex gap-6 items-center mb-8">
+                            <div class="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+                                <img alt="Course Image" class="w-full h-full object-cover opacity-90"
+                                    data-alt="Soft sunlit room with comfortable armchair and lush indoor plants, evoking a sense of calm and therapeutic space"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV5Y-hp600eWCb9MLHty-bdPC2-aAJFopKRLTk6xtUFOWgdXFCojyvVtPC4Z5kJ_wn3Uk_2za4pSowTyfw6mcf7-vQnIZ2sCVjQ_njblFrFcRiZXCBEosLJwyZH7sRe7PjMsbuZEtE_R8FiTM629kGVmFTk9jpaG32HL3fAp-AyerJgshwAALa7RefBxMWh-9By6n0W-QMR74ONDh7WLEY1N2rQ1eaoR2wqu4hKafWTieF4F6BWfiRrE2CwHOw-1g7PZgMCM3GZ88" />
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-on-surface mb-1">Programa The Journey</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Acceso total al programa de
+                                    12 semanas de transformación emocional.</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 text-sm mb-8">
+                            <div class="flex justify-between text-on-surface-variant">
+                                <span>Subtotal</span>
+                                <span>$850.00</span>
+                            </div>
+                            <div class="flex justify-between text-on-surface-variant">
+                                <span>Impuestos</span>
+                                <span>$0.00</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-6 border-t border-outline-variant/20 mb-8">
+                            <span class="font-headline text-xl text-primary">Total</span>
+                            <span class="font-headline text-2xl text-primary">$850.00</span>
+                        </div>
+                        <button
+                            class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-xl py-4 px-6 font-medium text-lg hover:shadow-[0_8px_20px_rgba(0,56,87,0.15)] transition-all duration-300 transform hover:-translate-y-0.5 flex justify-center items-center gap-2"
+                            type="submit">
+                            Finalizar Compra
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                        </button>
+                    </section>
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-col items-center gap-4 text-center px-4">
+                        <div class="flex items-center gap-2 text-secondary">
+                            <span class="material-symbols-outlined">lock</span>
+                            <span class="text-sm font-medium">Pago Seguro Encriptado SSL</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant max-w-xs">Tu información personal y de pago está
+                            encriptada de forma segura y nunca se almacena en nuestros servidores.</p>
+                    </div>
+                </div>
+        </form>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container-low py-12 px-8 mt-24">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+            <div class="text-xl font-headline font-bold text-primary dark:text-cyan-50">
+                Claudio Hornig
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 text-sm font-headline">
+                <a class="text-slate-500 hover:text-primary transition-colors" href="masterclass.html">Masterclass</a>
+                <a class="text-slate-500 hover:text-primary transition-colors" href="curso.html">Clases</a>
+                <a class="text-slate-500 hover:text-primary transition-colors" href="agenda.html">Agenda</a>
+                <a class="text-slate-500 hover:text-primary transition-colors" href="#">Privacidad</a>
+            </div>
+            <div class="text-sm font-headline text-slate-500">
+                © 2026 Claudio Hornig. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    <script src="database.js"></script>
+    <script>
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                // Optional: Show a subtle toast or change icon briefly
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+                const icon = btn.querySelector('.material-symbols-outlined');
+                const originalIcon = icon.innerText;
+                icon.innerText = 'check';
+                setTimeout(() => icon.innerText = originalIcon, 2000);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkoutForm = document.getElementById('checkoutForm');
+
+            if (checkoutForm) {
+                checkoutForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById('checkoutName').value;
+                    const email = document.getElementById('checkoutEmail').value;
+                    const phone = document.getElementById('checkoutPhone').value;
+
+                    await saveToDatabase({
+                        origen: 'checkout',
+                        nombre: name,
+                        email: email,
+                        telefono: phone,
+                        motivo: '',
+                        producto: 'The Journey Curriculum'
+                    }, 'checkout');
+
+                    // Show success message by replacing the entire form area
+                    const mainContainer = checkoutForm.parentElement;
+                    mainContainer.innerHTML = `
+                    <div class="max-w-2xl mx-auto text-center py-20 space-y-8 animate-in fade-in zoom-in duration-700">
+                        <div class="w-24 h-24 bg-secondary-container text-secondary rounded-full flex items-center justify-center mx-auto shadow-sm">
+                            <span class="material-symbols-outlined text-6xl">celebration</span>
+                        </div>
+                        <div class="space-y-4">
+                            <h2 class="font-headline text-4xl md:text-5xl text-primary">¡Solicitud Recibida!</h2>
+                            <p class="font-body text-xl text-on-surface-variant">
+                                Felicidades ${name.split(' ')[0]}, hemos registrado tu intención de compra para <strong>The Journey Curriculum</strong>.
+                            </p>
+                        </div>
+                        <div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/10 inline-block text-left w-full">
+                            <h3 class="font-headline text-xl text-primary mb-4">Próximos pasos:</h3>
+                            <ul class="space-y-4 text-on-surface-variant">
+                                <li class="flex gap-3">
+                                    <span class="material-symbols-outlined text-secondary">mail</span>
+                                    <span>Te hemos enviado los datos de transferencia a <strong>${email}</strong> por si no alcanzaste a copiarlos.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="material-symbols-outlined text-secondary">check_circle</span>
+                                    <span>Una vez que realices la transferencia, tu acceso se activará automáticamente en un plazo de 1 a 2 horas.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pt-8">
+                            <a href="index.html" class="inline-flex items-center justify-center px-10 py-4 rounded-xl bg-primary text-on-primary font-medium text-lg hover:shadow-lg transition-all duration-300">
+                                Volver al Inicio
+                                <span class="material-symbols-outlined ml-2">home</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                    // Scroll to top to see the message
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

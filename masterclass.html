@@ -1,0 +1,261 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Reserva tu lugar - Claudio Hornig</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-tertiary-fixed": "#2c1700",
+                  "outline-variant": "#c1c7cf",
+                  "on-tertiary-fixed-variant": "#614018",
+                  "on-error": "#ffffff",
+                  "tertiary-fixed-dim": "#efbd8a",
+                  "primary-container": "#1b4f72",
+                  "surface-dim": "#dadada",
+                  "surface-container-low": "#f3f3f3",
+                  "on-tertiary": "#ffffff",
+                  "surface-container-high": "#e8e8e8",
+                  "inverse-on-surface": "#f0f1f1",
+                  "on-primary": "#ffffff",
+                  "on-secondary": "#ffffff",
+                  "surface-bright": "#f9f9f9",
+                  "secondary-fixed-dim": "#a0d0c6",
+                  "inverse-primary": "#9dcbf4",
+                  "surface-variant": "#e2e2e2",
+                  "inverse-surface": "#2f3131",
+                  "secondary": "#39665f",
+                  "on-secondary-fixed-variant": "#1f4e47",
+                  "primary": "#003857",
+                  "on-surface-variant": "#41474e",
+                  "on-primary-container": "#92c0e9",
+                  "secondary-fixed": "#bcece2",
+                  "background": "#f9f9f9",
+                  "surface-container-highest": "#e2e2e2",
+                  "tertiary": "#4c2e07",
+                  "error": "#ba1a1a",
+                  "surface-container-lowest": "#ffffff",
+                  "on-surface": "#1a1c1c",
+                  "primary-fixed-dim": "#9dcbf4",
+                  "on-secondary-container": "#3d6b63",
+                  "secondary-container": "#b9e9e0",
+                  "primary-fixed": "#cce5ff",
+                  "on-secondary-fixed": "#00201c",
+                  "tertiary-fixed": "#ffdcbc",
+                  "on-error-container": "#93000a",
+                  "surface": "#f9f9f9",
+                  "on-tertiary-container": "#e3b280",
+                  "on-background": "#1a1c1c",
+                  "surface-tint": "#326286",
+                  "on-primary-fixed": "#001e31",
+                  "error-container": "#ffdad6",
+                  "outline": "#72787f",
+                  "on-primary-fixed-variant": "#154b6d",
+                  "surface-container": "#eeeeee",
+                  "tertiary-container": "#66441c"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Noto Serif", "serif"],
+                  "body": ["Inter", "sans-serif"],
+                  "label": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .editorial-shadow {
+      box-shadow: 0 12px 40px rgba(26, 28, 28, 0.06);
+    }
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, #003857 0%, #1b4f72 100%);
+    }
+    .input-ghost {
+      border: none;
+      border-bottom: 1px solid rgba(193, 199, 207, 0.15); /* outline-variant at 15% */
+      border-radius: 0;
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+      transition: border-color 0.3s ease;
+    }
+    .input-ghost:focus {
+      outline: none;
+      box-shadow: none;
+      border-bottom-color: #39665f; /* secondary */
+    }
+    .bg-blob-1 {
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 50vw;
+      height: 50vw;
+      background-color: #b9e9e0; /* secondary-container */
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      z-index: -1;
+    }
+    .bg-blob-2 {
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 40vw;
+      height: 40vw;
+      background-color: #ffdcbc; /* tertiary-fixed */
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      filter: blur(80px);
+      opacity: 0.3;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col relative overflow-x-hidden">
+<div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+    <div class="bg-blob-1"></div>
+    <div class="bg-blob-2"></div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md transition-all duration-300 ease-out">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-headline font-bold text-primary dark:text-cyan-50">
+    <a href="index.html">Claudio Hornig</a>
+</div>
+<div class="hidden md:flex items-center gap-8 font-headline text-lg tracking-tight">
+<a class="text-slate-600 hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
+<a class="text-primary border-b-2 border-secondary pb-1 hover:opacity-80 transition-all duration-300" href="masterclass.html">Masterclass</a>
+<a class="text-slate-600 hover:text-primary transition-all duration-300" href="curso.html">Clases</a>
+<a class="text-slate-600 hover:text-primary transition-all duration-300" href="agenda.html">Agenda</a>
+</div>
+<div class="hidden md:block">
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary-gradient text-on-primary font-medium hover:opacity-90 transition-all duration-300" href="agenda.html">
+        Reservar Cita
+    </a>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="w-full max-w-lg relative z-10 flex-grow pt-32 pb-24 mx-auto">
+<div class="text-center mb-12">
+<h1 class="font-headline text-4xl md:text-5xl text-primary font-bold tracking-tight mb-4" style="letter-spacing: -0.02em;">
+        Reserva tu lugar ahora
+      </h1>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed max-w-md mx-auto" style="">
+        Completa tus datos para asegurar tu acceso a la clase gratuita 'Sanación Emocional Profunda'.
+      </p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl editorial-shadow p-8 md:p-12 backdrop-blur-md bg-opacity-90">
+        <form class="space-y-8" id="registrationForm">
+<div class="space-y-2 relative">
+<label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="name">Nombre y Apellido</label>
+<input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="name" name="name" placeholder="Ej. Maria Perez" required type="text">
+</div>
+<div class="space-y-2 relative">
+<label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="email">Correo electronico</label>
+<input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="email" name="email" placeholder="tu@correo.com" required type="email">
+</div>
+<div class="space-y-2 relative">
+<label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="phone">Numero de telefono</label>
+<div class="flex">
+<select class="input-ghost font-body text-on-surface text-base py-2 mr-4 bg-transparent cursor-pointer focus:ring-0" name="country_code">
+<option value="+52">+52</option>
+<option value="+34">+34</option>
+<option value="+54">+54</option>
+<option value="+57">+57</option>
+<option value="+56" selected>+56</option>
+<option value="+1">+1</option>
+</select>
+<input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="phone" name="phone" placeholder="123 456 7890" required type="tel">
+</div>
+</div>
+<div class="pt-6">
+<button class="w-full bg-gradient-primary text-on-primary font-body font-medium text-lg py-4 px-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 flex justify-center items-center gap-2" type="submit">
+            Confirmar mi registro
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_right_alt</span>
+</button>
+</div>
+</form>
+<div class="mt-8 text-center">
+<p class="font-body text-xs text-outline-variant leading-relaxed">
+Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios del evento.
+</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low py-12 px-8 mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="text-xl font-headline font-bold text-primary dark:text-cyan-50">
+                    Claudio Hornig
+                </div>
+<div class="flex flex-wrap justify-center gap-6 text-sm font-headline">
+<a class="text-slate-500 hover:text-primary transition-colors" href="masterclass.html">Masterclass</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="curso.html">Clases</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="agenda.html">Agenda</a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Privacidad</a>
+</div>
+<div class="text-sm font-headline text-slate-500">
+                    © 2026 Claudio Hornig. Todos los derechos reservados.
+                </div>
+</div>
+</footer>
+<script src="database.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const registrationForm = document.getElementById('registrationForm');
+    
+    if (registrationForm) {
+      registrationForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.querySelector('select[name="country_code"]').value + ' ' + document.getElementById('phone').value;
+
+        await saveToDatabase({
+          nombre: name,
+          email: email,
+          telefono: phone
+        }, 'masterclass');
+
+        registrationForm.parentElement.innerHTML = `
+          <div class="text-center py-12 space-y-6 animate-in fade-in zoom-in duration-500">
+            <div class="w-20 h-20 bg-secondary-container text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-5xl">verified</span>
+            </div>
+            <div class="space-y-4">
+              <h3 class="font-headline text-3xl text-primary">Registro Exitoso!</h3>
+              <p class="font-body text-on-surface-variant text-lg">
+                Gracias, ${name.split(' ')[0]}. Hemos guardado tu lugar para la Masterclass.
+              </p>
+              <p class="font-body text-on-surface-variant">
+                Te hemos enviado un correo de confirmacion a <strong>${email}</strong> con los detalles del acceso.
+              </p>
+            </div>
+            <div class="pt-6">
+              <a href="curso.html" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-primary text-on-primary font-medium hover:opacity-90 transition-all duration-300">
+                Ir al contenido de las Clases
+                <span class="material-symbols-outlined ml-2">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        `;
+      });
+    }
+  });
+</script>
+</body></html>

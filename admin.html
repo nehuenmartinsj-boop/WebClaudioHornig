@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Dashboard - Claudio Hornig</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003857",
+                        "primary-container": "#1b4f72",
+                        "secondary": "#39665f",
+                        "secondary-container": "#b9e9e0",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#3d6b63",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#41474e",
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#72787f",
+                        "outline-variant": "#c1c7cf",
+                        "error": "#ba1a1a",
+                        "tertiary": "#4c2e07"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .editorial-shadow {
+            box-shadow: 0 12px 40px rgba(26, 28, 28, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+    <div id="loginScreen" class="fixed inset-0 bg-surface flex items-center justify-center z-50">
+        <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <h1 class="font-headline text-3xl text-primary mb-2">Dashboard Admin</h1>
+                <p class="text-on-surface-variant">Ingresa tus credenciales</p>
+            </div>
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-on-surface-variant mb-2">Usuario</label>
+                    <input type="text" id="username" required
+                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-on-surface-variant mb-2">Contraseña</label>
+                    <input type="password" id="password" required
+                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent">
+                </div>
+                <p id="loginError" class="text-error text-sm hidden">Credenciales incorrectas</p>
+                <button type="submit" class="w-full bg-gradient-primary text-on-primary font-medium py-3 px-6 rounded-xl hover:opacity-90 transition-all">
+                    Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="mainContent" class="hidden">
+    <nav class="bg-white/80 backdrop-blur-md border-b border-outline-variant/20 sticky top-0 z-50">
+        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+            <div class="flex-1 text-2xl font-headline font-bold text-primary">
+                Dashboard Admin
+            </div>
+            <button onclick="logout()" class="flex items-center gap-2 px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary transition-all">
+                <span class="material-symbols-outlined text-[20px]">logout</span>
+                Salir
+            </button>
+            <div class="flex items-center gap-4">
+                <button onclick="refreshData()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary-container text-on-secondary-container hover:opacity-90 transition-all">
+                    <span class="material-symbols-outlined text-[20px]">refresh</span>
+                    Actualizar
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-secondary">group</span>
+                    <span class="text-on-surface-variant text-sm">Total Registros</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-primary" id="totalCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-secondary">school</span>
+                    <span class="text-on-surface-variant text-sm">Masterclass</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-primary" id="masterclassCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-secondary">shopping_cart</span>
+                    <span class="text-on-surface-variant text-sm">Checkout</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-primary" id="checkoutCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-secondary">calendar_month</span>
+                    <span class="text-on-surface-variant text-sm">Agenda</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-primary" id="agendaCount">-</div>
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-6 mb-8">
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Buscar por nombre, email o teléfono..." 
+                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent"
+                        oninput="filterTable()">
+                </div>
+                <select id="filterType" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
+                    <option value="all">Todos</option>
+                    <option value="masterclass">Masterclass</option>
+                    <option value="checkout">Checkout</option>
+                    <option value="agenda">Agenda</option>
+                </select>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="border-b border-outline-variant/30">
+                        <tr class="text-left">
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Fecha</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Tipo</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Nombre</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Email</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Teléfono</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="divide-y divide-outline-variant/20">
+                        <tr>
+                            <td colspan="6" class="py-8 text-center text-on-surface-variant">Cargando datos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const SHEETS = {
+            masterclass: 'https://docs.google.com/spreadsheets/d/1gm9bJuXV8s_KbkAHK9D24bH-BI-KXT5ODVrTq4NCGyU/gviz/tq?tqx=out:csv',
+            checkout: 'https://docs.google.com/spreadsheets/d/1vSWuN6-nYYTmbvDbKHNNXI8LfRQz3oEAPefAbopmPpc/gviz/tq?tqx=out:csv',
+            agenda: 'https://docs.google.com/spreadsheets/d/1TXXei3DaJv5rczrfhXJnI6EdSiOomqWQBIJjpdCyJRA/gviz/tq?tqx=out:csv'
+        };
+
+        let allData = [];
+        let loading = false;
+
+        async function fetchCSV(url) {
+            const response = await fetch(url);
+            const text = await response.text();
+            return parseCSV(text);
+        }
+
+        function parseCSV(text) {
+            const lines = text.trim().split('\n');
+            if (lines.length < 2) return [];
+            
+            const headers = lines[0].split(',').map(h => h.replace(/"/g, ''));
+            const rows = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',').map(v => v.replace(/"/g, ''));
+                const row = {};
+                headers.forEach((h, idx) => row[h] = values[idx] || '');
+                rows.push(row);
+            }
+            
+            return rows;
+        }
+
+        async function loadData() {
+            if (loading) return;
+            loading = true;
+            
+            document.getElementById('tableBody').innerHTML = '<tr><td colspan="6" class="py-8 text-center text-on-surface-variant">Cargando datos...</td></tr>';
+            
+            try {
+                const [masterclass, checkout, agenda] = await Promise.all([
+                    fetchCSV(SHEETS.masterclass),
+                    fetchCSV(SHEETS.checkout),
+                    fetchCSV(SHEETS.agenda)
+                ]);
+
+                allData = [
+                    ...masterclass.map(r => ({ ...r, tipo: 'masterclass' })),
+                    ...checkout.map(r => ({ ...r, tipo: 'checkout' })),
+                    ...agenda.map(r => ({ ...r, tipo: 'agenda' }))
+                ].sort((a, b) => {
+                    const dateA = new Date(a['Marca temporal'] || a['Timestamp'] || 0);
+                    const dateB = new Date(b['Marca temporal'] || b['Timestamp'] || 0);
+                    return dateB - dateA;
+                });
+
+                updateStats(masterclass.length, checkout.length, agenda.length);
+                renderTable();
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('tableBody').innerHTML = '<tr><td colspan="6" class="py-8 text-center text-error">Error al cargar datos</td></tr>';
+            }
+            
+            loading = false;
+        }
+
+        function updateStats(masterclass, checkout, agenda) {
+            const total = masterclass + checkout + agenda;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('masterclassCount').textContent = masterclass;
+            document.getElementById('checkoutCount').textContent = checkout;
+            document.getElementById('agendaCount').textContent = agenda;
+        }
+
+        function getNombre(row, tipo) {
+            if (row['Nombre Completo']) return row['Nombre Completo'];
+            if (row['Nombre Compelto']) return row['Nombre Compelto'];
+            return '';
+        }
+
+        function getEmail(row) {
+            if (row['Email']) return row['Email'];
+            if (row['Correo Electrónico']) return row['Correo Electrónico'];
+            return '';
+        }
+
+        function getTelefono(row) {
+            if (row['Teléfono']) return row['Teléfono'];
+            return '';
+        }
+
+        function getDetalles(row, tipo) {
+            if (tipo === 'agenda') {
+                return row['Fecha de la Sesion'] || '';
+            }
+            return '';
+        }
+
+        function filterTable() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const filter = document.getElementById('filterType').value;
+            
+            const filtered = allData.filter(row => {
+                const tipo = row.tipo;
+                if (filter !== 'all' && tipo !== filter) return false;
+                
+                const nombre = getNombre(row, tipo).toLowerCase();
+                const email = getEmail(row).toLowerCase();
+                const telefono = getTelefono(row).toLowerCase();
+                
+                return nombre.includes(search) || email.includes(search) || telefono.includes(search);
+            });
+            
+            renderTable(filtered);
+        }
+
+        function renderTable(data = allData) {
+            if (data.length === 0) {
+                document.getElementById('tableBody').innerHTML = '<tr><td colspan="6" class="py-8 text-center text-on-surface-variant">No hay datos</td></tr>';
+                return;
+            }
+
+            const tipoLabels = {
+                masterclass: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-secondary-container text-on-secondary-container">Masterclass</span>',
+                checkout: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-tertiary text-white">Checkout</span>',
+                agenda: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-primary text-white">Agenda</span>'
+            };
+
+            document.getElementById('tableBody').innerHTML = data.map(row => {
+                const tipo = row.tipo;
+                return `
+                    <tr class="hover:bg-surface-container-low transition-colors">
+                        <td class="py-3 px-4 text-sm text-on-surface-variant">${row['Marca temporal'] || row['Timestamp'] || '-'}</td>
+                        <td class="py-3 px-4">${tipoLabels[tipo] || tipo}</td>
+                        <td class="py-3 px-4 font-medium">${getNombre(row, tipo)}</td>
+                        <td class="py-3 px-4 text-on-surface-variant">${getEmail(row)}</td>
+                        <td class="py-3 px-4 text-on-surface-variant">${getTelefono(row)}</td>
+                        <td class="py-3 px-4 text-on-surface-variant">${getDetalles(row, tipo)}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function refreshData() {
+            loadData();
+        }
+
+        const VALID_USER = 'ClauHor';
+        const VALID_PASS = 'Titoysiri';
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            if (user === VALID_USER && pass === VALID_PASS) {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                localStorage.setItem('adminLogged', 'true');
+                loadData();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        });
+
+        if (localStorage.getItem('adminLogged') === 'true') {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            loadData();
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLogged');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+    </script>
+</body>
+</html>
