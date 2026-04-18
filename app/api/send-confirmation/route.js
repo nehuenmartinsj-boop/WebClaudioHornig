@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
 const resend = new Resend('re_7DP8P81U_NvNxPZU3JoX3qkVNth1mgD7z');
@@ -9,7 +10,7 @@ export async function POST(request) {
     const { email, name } = await request.json();
     
     if (!email || !name) {
-      return Response.json({ error: 'Email y nombre son requeridos' }, { status: 400 });
+      return NextResponse.json({ error: 'Email y nombre son requeridos' }, { status: 400 });
     }
 
     const data = await resend.emails.send({
@@ -34,9 +35,9 @@ export async function POST(request) {
       `
     });
 
-    return Response.json({ success: true, data });
+    return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error('Error sending email:', error);
-    return Response.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
