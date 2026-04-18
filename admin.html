@@ -90,35 +90,40 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="material-symbols-outlined text-secondary">group</span>
-                    <span class="text-on-surface-variant text-sm">Total Registros</span>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-secondary">group</span>
+                        <span class="text-on-surface-variant text-sm">Total Registros</span>
+                    </div>
+                    <div class="text-4xl font-headline font-bold text-primary" id="totalCount">-</div>
                 </div>
-                <div class="text-4xl font-headline font-bold text-primary" id="totalCount">-</div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="material-symbols-outlined text-secondary">school</span>
-                    <span class="text-on-surface-variant text-sm">Masterclass</span>
+                <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-secondary">school</span>
+                        <span class="text-on-surface-variant text-sm">Masterclass</span>
+                    </div>
+                    <div class="text-4xl font-headline font-bold text-primary" id="masterclassCount">-</div>
                 </div>
-                <div class="text-4xl font-headline font-bold text-primary" id="masterclassCount">-</div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="material-symbols-outlined text-secondary">shopping_cart</span>
-                    <span class="text-on-surface-variant text-sm">Checkout</span>
+                <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-secondary">shopping_cart</span>
+                        <span class="text-on-surface-variant text-sm">Checkout</span>
+                    </div>
+                    <div class="text-4xl font-headline font-bold text-primary" id="checkoutCount">-</div>
                 </div>
-                <div class="text-4xl font-headline font-bold text-primary" id="checkoutCount">-</div>
-            </div>
-            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="material-symbols-outlined text-secondary">calendar_month</span>
-                    <span class="text-on-surface-variant text-sm">Agenda</span>
+                <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-secondary">calendar_month</span>
+                        <span class="text-on-surface-variant text-sm">Agenda</span>
+                    </div>
+                    <div class="text-4xl font-headline font-bold text-primary" id="agendaCount">-</div>
                 </div>
-                <div class="text-4xl font-headline font-bold text-primary" id="agendaCount">-</div>
             </div>
+            <select id="filterMonth" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-surface-container-lowest rounded-lg cursor-pointer">
+                <option value="all">Todos los meses</option>
+            </select>
         </div>
 
         <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-6 mb-8">
@@ -128,10 +133,7 @@
                         class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent"
                         oninput="filterTable()">
                 </div>
-                <select id="filterMonth" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
-                    <option value="all">Todos los meses</option>
-                </select>
-                <select id="filterType" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
+                
                     <option value="all">Todos</option>
                     <option value="masterclass">Masterclass</option>
                     <option value="checkout">Checkout</option>
@@ -263,11 +265,35 @@
         }
 
         function updateStats(masterclass, checkout, agenda) {
-            const total = masterclass + checkout + agenda;
-            document.getElementById('totalCount').textContent = total;
-            document.getElementById('masterclassCount').textContent = masterclass;
-            document.getElementById('checkoutCount').textContent = checkout;
-            document.getElementById('agendaCount').textContent = agenda;
+            const filterMonth = document.getElementById('filterMonth').value;
+            const filterType = document.getElementById('filterType').value;
+            
+            if (filterMonth === 'all' && filterType === 'all') {
+                const total = masterclass + checkout + agenda;
+                document.getElementById('totalCount').textContent = total;
+                document.getElementById('masterclassCount').textContent = masterclass;
+                document.getElementById('checkoutCount').textContent = checkout;
+                document.getElementById('agendaCount').textContent = agenda;
+            } else {
+                const filtered = allData.filter(row => {
+                    const tipo = row.tipo;
+                    if (filterType !== 'all' && tipo !== filterType) return false;
+                    if (filterMonth !== 'all') {
+                        const str = row['Marca temporal'] || row['Timestamp'] || '';
+                        const parts = str.match(/(\d+)\/(\d+)\/(\d+)/);
+                        if (!parts || `${parts[3]}-${parts[2].padStart(2, '0')}` !== filterMonth) return false;
+                    }
+                    return true;
+                });
+                
+                const m = filtered.filter(r => r.tipo === 'masterclass').length;
+                const c = filtered.filter(r => r.tipo === 'checkout').length;
+                const a = filtered.filter(r => r.tipo === 'agenda').length;
+                document.getElementById('totalCount').textContent = filtered.length;
+                document.getElementById('masterclassCount').textContent = m;
+                document.getElementById('checkoutCount').textContent = c;
+                document.getElementById('agendaCount').textContent = a;
+            }
         }
 
         function getNombre(row, tipo) {
@@ -317,6 +343,7 @@
             });
             
             renderTable(filtered);
+            updateStats();
         }
 
         function renderTable(data = allData) {
