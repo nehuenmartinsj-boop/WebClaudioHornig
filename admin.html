@@ -121,9 +121,6 @@
                     <div class="text-4xl font-headline font-bold text-primary" id="agendaCount">-</div>
                 </div>
             </div>
-            <select id="filterMonth" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-surface-container-lowest rounded-lg cursor-pointer">
-                <option value="all">Todos los meses</option>
-            </select>
         </div>
 
         <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-6 mb-8">
@@ -133,7 +130,10 @@
                         class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent"
                         oninput="filterTable()">
                 </div>
-                
+                <select id="filterMonth" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
+                    <option value="all">Todos los meses</option>
+                </select>
+                <select id="filterType" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
                     <option value="all">Todos</option>
                     <option value="masterclass">Masterclass</option>
                     <option value="checkout">Checkout</option>
