@@ -5,6 +5,8 @@ const resend = new Resend('re_7DP8P81U_NvNxPZU3JoX3qkVNth1mgD7z');
 const MASTERCLASS_MEET_LINK = 'https://meet.google.com/abc-defg-hij';
 
 module.exports = async function handler(req, res) {
+  console.log('Request received:', req.method, req.body);
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -12,10 +14,12 @@ module.exports = async function handler(req, res) {
   const { email, name } = req.body;
   
   if (!email || !name) {
+    console.log('Missing email or name:', { email, name });
     return res.status(400).json({ error: 'Email y nombre son requeridos' });
   }
 
   try {
+    console.log('Sending email to:', email);
     const data = await resend.emails.send({
       from: 'Claudio Hornig <onboarding@resend.dev>',
       to: [email],
@@ -38,6 +42,7 @@ module.exports = async function handler(req, res) {
       `
     });
 
+    console.log('Email sent:', data);
     res.status(200).json({ success: true, data });
   } catch (error) {
     console.error('Error sending email:', error);
