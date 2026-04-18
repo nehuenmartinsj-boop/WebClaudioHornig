@@ -128,6 +128,9 @@
                         class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent"
                         oninput="filterTable()">
                 </div>
+                <select id="filterMonth" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
+                    <option value="all">Todos los meses</option>
+                </select>
                 <select id="filterType" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
                     <option value="all">Todos</option>
                     <option value="masterclass">Masterclass</option>
@@ -224,6 +227,7 @@
                     return dateB - dateA;
                 });
 
+                populateMonthFilter();
                 updateStats(masterclass.length, checkout.length, agenda.length);
                 renderTable();
             } catch (error) {
@@ -232,6 +236,30 @@
             }
             
             loading = false;
+        }
+
+        function populateMonthFilter() {
+            const months = {};
+            allData.forEach(row => {
+                const str = row['Marca temporal'] || row['Timestamp'] || '';
+                const parts = str.match(/(\d+)\/(\d+)\/(\d+)/);
+                if (parts) {
+                    const key = `${parts[3]}-${parts[2].padStart(2, '0')}`;
+                    months[key] = true;
+                }
+            });
+
+            const select = document.getElementById('filterMonth');
+            const currentValue = select.value;
+            select.innerHTML = '<option value="all">Todos los meses</option>';
+            
+            Object.keys(months).sort().reverse().forEach(month => {
+                const [year, m] = month.split('-');
+                const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                select.innerHTML += `<option value="${month}">${monthNames[parseInt(m) - 1]} ${year}</option>`;
+            });
+            
+            select.value = currentValue;
         }
 
         function updateStats(masterclass, checkout, agenda) {
@@ -268,11 +296,18 @@
 
         function filterTable() {
             const search = document.getElementById('searchInput').value.toLowerCase();
-            const filter = document.getElementById('filterType').value;
+            const filterType = document.getElementById('filterType').value;
+            const filterMonth = document.getElementById('filterMonth').value;
             
             const filtered = allData.filter(row => {
                 const tipo = row.tipo;
-                if (filter !== 'all' && tipo !== filter) return false;
+                if (filterType !== 'all' && tipo !== filterType) return false;
+                
+                if (filterMonth !== 'all') {
+                    const str = row['Marca temporal'] || row['Timestamp'] || '';
+                    const parts = str.match(/(\d+)\/(\d+)\/(\d+)/);
+                    if (!parts || `${parts[3]}-${parts[2].padStart(2, '0')}` !== filterMonth) return false;
+                }
                 
                 const nombre = getNombre(row, tipo).toLowerCase();
                 const email = getEmail(row).toLowerCase();
