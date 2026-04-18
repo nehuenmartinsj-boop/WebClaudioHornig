@@ -232,7 +232,7 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
           telefono: phone
         }, 'masterclass');
 
-        fetch('http://localhost:3000/api/send-confirmation', {
+        fetch('/api/send-confirmation', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email })

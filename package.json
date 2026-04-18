@@ -1,15 +1,15 @@
 {
-  "name": "claudio-hornig-api",
+  "name": "web-claudio-hornig",
   "version": "1.0.0",
-  "description": "API for sending emails via Resend",
-  "main": "api/server.js",
   "scripts": {
-    "start": "node api/server.js",
-    "dev": "node api/server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "resend": "^3.2.0"
   }
 }
