@@ -208,9 +208,19 @@
                     ...masterclass.map(r => ({ ...r, tipo: 'masterclass' })),
                     ...checkout.map(r => ({ ...r, tipo: 'checkout' })),
                     ...agenda.map(r => ({ ...r, tipo: 'agenda' }))
-                ].sort((a, b) => {
-                    const dateA = new Date(a['Marca temporal'] || a['Timestamp'] || 0);
-                    const dateB = new Date(b['Marca temporal'] || b['Timestamp'] || 0);
+                ];
+
+                allData.sort((a, b) => {
+                    const parseDate = (str) => {
+                        if (!str) return 0;
+                        const parts = str.match(/(\d+)\/(\d+)\/(\d+)\s+(\d+):(\d+):(\d+)/);
+                        if (parts) {
+                            return new Date(parts[3], parts[1] - 1, parts[4], parts[5], parts[6]);
+                        }
+                        return new Date(str);
+                    };
+                    const dateA = parseDate(a['Marca temporal'] || a['Timestamp']);
+                    const dateB = parseDate(b['Marca temporal'] || b['Timestamp']);
                     return dateB - dateA;
                 });
 
