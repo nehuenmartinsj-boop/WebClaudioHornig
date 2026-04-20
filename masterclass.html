@@ -253,6 +253,10 @@
 <input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="phone" name="phone" placeholder="123 456 7890" required type="tel">
 </div>
 </div>
+<div class="space-y-2 relative">
+<label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="ciudad">Ciudad</label>
+<input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="ciudad" name="ciudad" placeholder="Santiago, Chile" required type="text">
+</div>
 <div class="pt-6">
 <button class="w-full bg-gradient-primary text-on-primary font-body font-medium text-lg py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 pulse-glow flex justify-center items-center gap-2" type="submit">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">celebration</span>
@@ -306,11 +310,13 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const phone = document.querySelector('select[name="country_code"]').value + ' ' + document.getElementById('phone').value;
+        const ciudad = document.getElementById('ciudad').value;
 
         await saveToDatabase({
           nombre: name,
           email: email,
-          telefono: phone
+          telefono: phone,
+          ciudad: ciudad
         }, 'masterclass');
 
         const API_URL = window.location.origin + '/api/send-confirmation';

@@ -77,6 +77,7 @@ updateLeadScore(email, +20, 'Asistió a masterclass');
   id: "1234567890",
   nombre: "Juan Pérez",
   email: "juan@email.com",
+  ciudad: "Santiago, Chile",
   status: "lead",
   fuente: "masterclass",
   score: 30,
@@ -87,6 +88,29 @@ updateLeadScore(email, +20, 'Asistió a masterclass');
   ]
 }
 ```
+
+## Análisis por Ciudad
+
+Para masterclass presenciales, filtra por ciudad:
+
+```javascript
+const leads = getLeads();
+const porCiudad = leads.reduce((acc, lead) => {
+    const ciudad = lead.ciudad || 'Sin especificar';
+    acc[ciudad] = (acc[ciudad] || 0) + 1;
+    return acc;
+}, {});
+// { "Santiago, Chile": 45, "Buenos Aires": 23, "Sin especificar": 5 }
+```
+
+## Ciudades Potenciales (Ejemplo)
+
+| Ciudad | Leads | Potencial |
+|--------|-------|----------|
+| Santiago | 45 | Alto |
+| Buenos Aires | 23 | Alto |
+| Medellín | 12 | Medio |
+| Lima | 8 | Bajo |
 
 ## Funciones Futuras
 

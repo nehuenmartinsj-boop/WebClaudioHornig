@@ -212,6 +212,10 @@
                             <label class="sr-only" for="phone">Teléfono de contacto</label>
                             <input class="w-full bg-transparent ghost-input py-3 text-on-surface placeholder:text-outline focus:ring-0" id="phone" placeholder="Teléfono de contacto" required="" type="tel"/>
                         </div>
+                        <div>
+                            <label class="sr-only" for="ciudad">Ciudad</label>
+                            <input class="w-full bg-transparent ghost-input py-3 text-on-surface placeholder:text-outline focus:ring-0" id="ciudad" placeholder="Ciudad" required="" type="text"/>
+                        </div>
                     </div>
                     <div>
                         <label class="sr-only" for="reason">Motivo de la sesión (breve)</label>
@@ -345,21 +349,20 @@
             e.preventDefault();
             if (!selectedDate || !selectedTime) { alert("Por favor selecciona una fecha y un horario primero."); return; }
                         const formData = {
-                name: document.getElementById('name').value,
+                nombre: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                reason: document.getElementById('reason').value,
-                date: selectedDate.toLocaleDateString(),
-                time: selectedTime
+                telefono: document.getElementById('phone').value,
+                ciudad: document.getElementById('ciudad').value,
+                motivo: document.getElementById('reason').value,
+                fecha: selectedDate.toLocaleDateString() + ' ' + selectedTime
             };
 
             await saveToDatabase({
-                origen: 'agenda',
-                nombre: formData.name,
+                nombre: formData.nombre,
                 email: formData.email,
-                telefono: formData.phone,
-                motivo: `${formData.date} a las ${formData.time} - ${formData.reason}`,
-                producto: 'Sesión de Terapia'
+                telefono: formData.telefono,
+                ciudad: formData.ciudad,
+                motivo: formData.motivo
             }, 'agenda');
 
             bookingForm.innerHTML = `

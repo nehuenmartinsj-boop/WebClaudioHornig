@@ -8,7 +8,8 @@ const FIELD_MAP = {
     masterclass: {
         nombre: 'entry.1131854161',
         email: 'entry.601882798',
-        telefono: 'entry.1650002445'
+        telefono: 'entry.1650002445',
+        ciudad: 'entry.1234567890'
     },
     checkout: {
         nombre: 'entry.2009859634',
@@ -19,6 +20,7 @@ const FIELD_MAP = {
         nombre: 'entry.274453835',
         email: 'entry.1187255089',
         telefono: 'entry.41779768',
+        ciudad: 'entry.9876543210',
         motivo: 'entry.355106775',
         fecha: 'entry.402920034'
     }
@@ -52,7 +54,7 @@ function findLeadByEmail(email) {
     return leads.find(l => l.email.toLowerCase() === email.toLowerCase());
 }
 
-function getOrCreateLead(email, nombre, fuente = LEAD_FUENTE.MASTERCLASS) {
+function getOrCreateLead(email, nombre, fuente = LEAD_FUENTE.MASTERCLASS, ciudad = '') {
     const leads = getLeads();
     let lead = leads.find(l => l.email.toLowerCase() === email.toLowerCase());
     
@@ -62,6 +64,7 @@ function getOrCreateLead(email, nombre, fuente = LEAD_FUENTE.MASTERCLASS) {
             id: Date.now().toString(),
             nombre,
             email,
+            ciudad: ciudad || '',
             status: LEAD_STATUS.LEAD,
             fuente,
             score: 10,
@@ -70,6 +73,9 @@ function getOrCreateLead(email, nombre, fuente = LEAD_FUENTE.MASTERCLASS) {
             notas: []
         };
         leads.push(lead);
+        saveLeads(leads);
+    } else if (ciudad && !lead.ciudad) {
+        lead.ciudad = ciudad;
         saveLeads(leads);
     }
     
@@ -167,6 +173,11 @@ async function saveToDatabase(data, formType = 'masterclass', leadNota = '') {
     } else if (formType === 'checkout') {
         updateLeadScore(data.email, 50, 'Compró curso');
         updateLeadStatus(data.email, LEAD_STATUS.CLIENTE);
+    }
+    
+    if (data.ciudad && lead) {
+        lead.ciudad = data.ciudad;
+        saveLeads(getLeads());
     }
     
     leadNota && updateLeadScore(data.email, 0, leadNota);
