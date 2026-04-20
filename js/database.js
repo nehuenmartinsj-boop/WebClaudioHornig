@@ -24,7 +24,104 @@ const FIELD_MAP = {
     }
 };
 
-async function saveToDatabase(data, formType = 'masterclass') {
+const LEAD_STATUS = {
+    SUSPECTO: 'suspecto',
+    LEAD: 'lead',
+    CLIENTE: 'cliente',
+    FIDELIZADO: 'fidelizado'
+};
+
+const LEAD_FUENTE = {
+    MASTERCLASS: 'masterclass',
+    AGENDA: 'agenda',
+    CURSO: 'curso',
+    ORGANICO: 'organico'
+};
+
+function getLeads() {
+    const leads = localStorage.getItem('leads');
+    return leads ? JSON.parse(leads) : [];
+}
+
+function saveLeads(leads) {
+    localStorage.setItem('leads', JSON.stringify(leads));
+}
+
+function findLeadByEmail(email) {
+    const leads = getLeads();
+    return leads.find(l => l.email.toLowerCase() === email.toLowerCase());
+}
+
+function getOrCreateLead(email, nombre, fuente = LEAD_FUENTE.MASTERCLASS) {
+    const leads = getLeads();
+    let lead = leads.find(l => l.email.toLowerCase() === email.toLowerCase());
+    
+    if (!lead) {
+        const now = new Date().toISOString();
+        lead = {
+            id: Date.now().toString(),
+            nombre,
+            email,
+            status: LEAD_STATUS.LEAD,
+            fuente,
+            score: 10,
+            fecha_registro: now,
+            ultima_interaccion: now,
+            notas: []
+        };
+        leads.push(lead);
+        saveLeads(leads);
+    }
+    
+    return lead;
+}
+
+function updateLeadStatus(email, status, nota = '') {
+    const leads = getLeads();
+    const lead = leads.find(l => l.email.toLowerCase() === email.toLowerCase());
+    
+    if (lead) {
+        lead.status = status;
+        lead.ultima_interaccion = new Date().toISOString();
+        if (nota) {
+            lead.notas.push({ fecha: new Date().toISOString(), texto: nota });
+        }
+        saveLeads(leads);
+    }
+}
+
+function updateLeadScore(email, scoreDelta, nota = '') {
+    const leads = getLeads();
+    const lead = leads.find(l => l.email.toLowerCase() === email.toLowerCase());
+    
+    if (lead) {
+        lead.score = Math.min(100, Math.max(0, lead.score + scoreDelta));
+        lead.ultima_interaccion = new Date().toISOString();
+        if (nota) {
+            lead.notas.push({ fecha: new Date().toISOString(), texto: nota });
+        }
+        saveLeads(leads);
+    }
+}
+
+function getLeadsByStatus(status) {
+    const leads = getLeads();
+    return leads.filter(l => l.status === status);
+}
+
+function getLeadSummary() {
+    const leads = getLeads();
+    return {
+        total: leads.length,
+        suspecto: leads.filter(l => l.status === LEAD_STATUS.SUSPECTO).length,
+        lead: leads.filter(l => l.status === LEAD_STATUS.LEAD).length,
+        cliente: leads.filter(l => l.status === LEAD_STATUS.CLIENTE).length,
+        fidelizado: leads.filter(l => l.status === LEAD_STATUS.FIDELIZADO).length,
+        promedioScore: leads.length ? Math.round(leads.reduce((acc, l) => acc + l.score, 0) / leads.length) : 0
+    };
+}
+
+async function saveToDatabase(data, formType = 'masterclass', leadNota = '') {
     const formId = FORMS[formType] || FORMS.masterclass;
     const fields = FIELD_MAP[formType] || FIELD_MAP.masterclass;
     
@@ -56,5 +153,23 @@ async function saveToDatabase(data, formType = 'masterclass') {
         console.error('Error:', error);
     }
     
-    return { success: true };
+    const fuente = formType === 'masterclass' ? LEAD_FUENTE.MASTERCLASS :
+                   formType === 'agenda' ? LEAD_FUENTE.AGENDA :
+                   formType === 'checkout' ? LEAD_FUENTE.CURSO : LEAD_FUENTE.ORGANICO;
+    
+    const lead = getOrCreateLead(data.email, data.nombre, fuente);
+    
+    if (formType === 'masterclass') {
+        updateLeadScore(data.email, 20, 'Registrado en masterclass');
+    } else if (formType === 'agenda') {
+        updateLeadScore(data.email, 40, 'Reservó cita');
+        updateLeadStatus(data.email, LEAD_STATUS.CLIENTE);
+    } else if (formType === 'checkout') {
+        updateLeadScore(data.email, 50, 'Compró curso');
+        updateLeadStatus(data.email, LEAD_STATUS.CLIENTE);
+    }
+    
+    leadNota && updateLeadScore(data.email, 0, leadNota);
+    
+    return { success: true, lead };
 }
