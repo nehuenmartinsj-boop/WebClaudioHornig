@@ -144,9 +144,18 @@
         Reservar Cita
     </a>
 </div>
-<button class="md:hidden text-primary">
+<button class="md:hidden text-primary" id="mobile-menu-btn">
 <span class="material-symbols-outlined">menu</span>
 </button>
+</div>
+<div id="mobile-menu" class="hidden md:hidden fixed top-20 left-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-40 py-4">
+<div class="flex flex-col items-center gap-4 px-8">
+<a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
+<a class="text-primary font-headline text-lg border-b-2 border-secondary pb-1" href="masterclass.html">Masterclass</a>
+<a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="curso.html">Clases</a>
+<a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="agenda.html">Agenda</a>
+<a class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary-gradient text-on-primary font-medium mt-2" href="agenda.html">Reservar Cita</a>
+</div>
 </div>
 </nav>
 <main class="w-full max-w-lg relative z-10 flex-grow pt-32 pb-24 mx-auto">
@@ -265,5 +274,15 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
       });
     }
   });
+</script>
+<script>
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenuBtn && mobileMenu) {
+  mobileMenuBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    mobileMenu.classList.toggle('hidden');
+  });
+}
 </script>
 </body></html>
