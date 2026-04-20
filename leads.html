@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Leads - Claudio Hornig</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003857",
+                        "primary-container": "#1b4f72",
+                        "secondary": "#39665f",
+                        "secondary-container": "#b9e9e0",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#3d6b63",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "on-surface-variant": "#41474e",
+                        "surface": "#f9f9f9",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#72787f",
+                        "outline-variant": "#c1c7cf",
+                        "error": "#ba1a1a",
+                        "tertiary": "#4c2e07"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .editorial-shadow {
+            box-shadow: 0 12px 40px rgba(26, 28, 28, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+    <div id="loginScreen" class="fixed inset-0 bg-surface flex items-center justify-center z-50">
+        <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <h1 class="font-headline text-3xl text-primary mb-2">Leads</h1>
+                <p class="text-on-surface-variant">Ingresa tus credenciales</p>
+            </div>
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-on-surface-variant mb-2">Usuario</label>
+                    <input type="text" id="username" required
+                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-on-surface-variant mb-2">Contraseña</label>
+                    <input type="password" id="password" required
+                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent">
+                </div>
+                <p id="loginError" class="text-error text-sm hidden">Credenciales incorrectas</p>
+                <button type="submit" class="w-full bg-gradient-primary text-on-primary font-medium py-3 px-6 rounded-xl hover:opacity-90 transition-all">
+                    Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="mainContent" class="hidden">
+    <nav class="bg-white/80 backdrop-blur-md border-b border-outline-variant/20 sticky top-0 z-50">
+        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+            <div class="flex-1 flex items-center gap-4">
+                <div class="text-2xl font-headline font-bold text-primary">
+                    Leads
+                </div>
+                <a href="admin.html" class="flex items-center gap-2 px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary transition-all">
+                    <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                    Dashboard
+                </a>
+            </div>
+            <button onclick="logout()" class="flex items-center gap-2 px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary transition-all">
+                <span class="material-symbols-outlined text-[20px]">logout</span>
+                Salir
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-8 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-secondary">group</span>
+                    <span class="text-on-surface-variant text-sm">Total</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-primary" id="totalCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-tertiary">person_search</span>
+                    <span class="text-on-surface-variant text-sm">Suspectos</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-tertiary" id="suspectoCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-primary">how_to_reg</span>
+                    <span class="text-on-surface-variant text-sm">Leads</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-primary" id="leadCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-secondary">shopping_cart</span>
+                    <span class="text-on-surface-variant text-sm">Clientes</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-secondary" id="clienteCount">-</div>
+            </div>
+            <div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="material-symbols-outlined text-green-600">favorite</span>
+                    <span class="text-on-surface-variant text-sm">Fidelizados</span>
+                </div>
+                <div class="text-4xl font-headline font-bold text-green-600" id="fidelizadoCount">-</div>
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-6 mb-8">
+            <h3 class="font-headline text-xl text-primary mb-6">Leads por Ciudad</h3>
+            <div id="ciudadStats" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="py-8 text-center text-on-surface-variant">Cargando...</div>
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-6">
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Buscar por nombre o email..." 
+                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent"
+                        oninput="filterTable()">
+                </div>
+                <select id="filterStatus" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
+                    <option value="all">Todos los estados</option>
+                    <option value="suspecto">Suspecto</option>
+                    <option value="lead">Lead</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="fidelizado">Fidelizado</option>
+                </select>
+                <select id="filterFuente" onchange="filterTable()" class="border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent cursor-pointer">
+                    <option value="all">Todas las fuentes</option>
+                    <option value="masterclass">Masterclass</option>
+                    <option value="agenda">Agenda</option>
+                    <option value="curso">Curso</option>
+                    <option value="organico">Orgánico</option>
+                </select>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="border-b border-outline-variant/30">
+                        <tr class="text-left">
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Nombre</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Email</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Ciudad</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Estado</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Fuente</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Score</th>
+                            <th class="py-3 px-4 text-sm font-medium text-on-surface-variant">Última Interacción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="divide-y divide-outline-variant/20">
+                        <tr>
+                            <td colspan="7" class="py-8 text-center text-on-surface-variant">Cargando datos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/database.js"></script>
+    <script>
+        const STATUS_LABELS = {
+            suspecto: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-tertiary/20 text-tertiary">Suspecto</span>',
+            lead: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary">Lead</span>',
+            cliente: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-secondary/20 text-secondary">Cliente</span>',
+            fidelizado: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">Fidelizado</span>'
+        };
+
+        const FUENTE_LABELS = {
+            masterclass: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-secondary-container text-on-secondary-container">Masterclass</span>',
+            agenda: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-primary text-white">Agenda</span>',
+            curso: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-tertiary text-white">Curso</span>',
+            organico: '<span class="px-2 py-1 rounded-full text-xs font-medium bg-outline text-white">Orgánico</span>'
+        };
+
+        let allLeads = [];
+
+        function loadLeads() {
+            const leads = localStorage.getItem('leads');
+            allLeads = leads ? JSON.parse(leads) : [];
+            updateStats();
+            renderCiudadStats();
+            renderTable();
+        }
+
+        function updateStats() {
+            const total = allLeads.length;
+            const sospechoso = allLeads.filter(l => l.status === 'suspecto').length;
+            const lead = allLeads.filter(l => l.status === 'lead').length;
+            const cliente = allLeads.filter(l => l.status === 'cliente').length;
+            const fidelizado = allLeads.filter(l => l.status === 'fidelizado').length;
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('suspectoCount').textContent = sospechoso;
+            document.getElementById('leadCount').textContent = lead;
+            document.getElementById('clienteCount').textContent = cliente;
+            document.getElementById('fidelizadoCount').textContent = fidelizado;
+        }
+
+        function renderCiudadStats() {
+            const porCiudad = allLeads.reduce((acc, lead) => {
+                const ciudad = lead.ciudad || 'Sin especificar';
+                acc[ciudad] = (acc[ciudad] || 0) + 1;
+                return acc;
+            }, {});
+
+            const sorted = Object.entries(porCiudad).sort((a, b) => b[1] - a[1]);
+            
+            if (sorted.length === 0) {
+                document.getElementById('ciudadStats').innerHTML = '<div class="py-8 text-center text-on-surface-variant col-span-4">No hay datos</div>';
+                return;
+            }
+
+            document.getElementById('ciudadStats').innerHTML = sorted.map(([ciudad, count]) => `
+                <div class="bg-surface-container-low rounded-lg p-4 text-center">
+                    <div class="text-2xl font-headline font-bold text-primary">${count}</div>
+                    <div class="text-sm text-on-surface-variant">${ciudad}</div>
+                </div>
+            `).join('');
+        }
+
+        function filterTable() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const filterStatus = document.getElementById('filterStatus').value;
+            const filterFuente = document.getElementById('filterFuente').value;
+
+            const filtered = allLeads.filter(lead => {
+                if (filterStatus !== 'all' && lead.status !== filterStatus) return false;
+                if (filterFuente !== 'all' && lead.fuente !== filterFuente) return false;
+                if (search) {
+                    const nombre = (lead.nombre || '').toLowerCase();
+                    const email = (lead.email || '').toLowerCase();
+                    if (!nombre.includes(search) && !email.includes(search)) return false;
+                }
+                return true;
+            });
+
+            renderTable(filtered);
+        }
+
+        function renderTable(data = allLeads) {
+            if (data.length === 0) {
+                document.getElementById('tableBody').innerHTML = '<tr><td colspan="7" class="py-8 text-center text-on-surface-variant">No hay leads</td></tr>';
+                return;
+            }
+
+            document.getElementById('tableBody').innerHTML = data.map(lead => {
+                const fecha = lead.ultima_interaccion ? new Date(lead.ultima_interaccion).toLocaleDateString('es-CL') : '-';
+                return `
+                    <tr class="hover:bg-surface-container-low transition-colors">
+                        <td class="py-3 px-4 font-medium">${lead.nombre || '-'}</td>
+                        <td class="py-3 px-4 text-on-surface-variant">${lead.email || '-'}</td>
+                        <td class="py-3 px-4 text-on-surface-variant">${lead.ciudad || '-'}</td>
+                        <td class="py-3 px-4">${STATUS_LABELS[lead.status] || lead.status}</td>
+                        <td class="py-3 px-4">${FUENTE_LABELS[lead.fuente] || lead.fuente}</td>
+                        <td class="py-3 px-4">
+                            <div class="flex items-center gap-2">
+                                <div class="w-16 h-2 bg-outline-variant/30 rounded-full overflow-hidden">
+                                    <div class="h-full ${lead.score >= 60 ? 'bg-green-500' : lead.score >= 30 ? 'bg-secondary' : 'bg-tertiary'}" style="width: ${lead.score || 0}%"></div>
+                                </div>
+                                <span class="text-sm text-on-surface-variant">${lead.score || 0}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 px-4 text-sm text-on-surface-variant">${fecha}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        const VALID_USER = 'ClauHor';
+        const VALID_PASS = 'Titoysiri';
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            if (user === VALID_USER && pass === VALID_PASS) {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                localStorage.setItem('adminLogged', 'true');
+                loadLeads();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        });
+
+        if (localStorage.getItem('adminLogged') === 'true') {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            loadLeads();
+        }
+
+        function logout() {
+            localStorage.removeItem('adminLogged');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+    </script>
+</body>
+</html>
