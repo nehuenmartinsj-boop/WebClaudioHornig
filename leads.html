@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -49,24 +50,26 @@
         <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-8 w-full max-w-md">
             <div class="text-center mb-8">
                 <h1 class="font-headline text-3xl text-primary mb-2">Leads</h1>
-                <p class="text-on-surface-variant">Ingresa tus credenciales</p>
+                <p class="text-on-surface-variant">Ingresa con tu cuenta Google</p>
             </div>
-            <form id="loginForm" class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-on-surface-variant mb-2">Usuario</label>
-                    <input type="text" id="username" required
-                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent">
+            <div class="space-y-6">
+                <div id="g_id_onload"
+                    data-client_id="773838227752-eokm5egm3kv8fjn07jojjepg9fhchftr.apps.googleusercontent.com"
+                    data-context="signin"
+                    data-ux_mode="popup"
+                    data-callback="handleCredentialResponse"
+                    data-auto_prompt="false">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-on-surface-variant mb-2">Contraseña</label>
-                    <input type="password" id="password" required
-                        class="w-full border-b border-outline-variant/30 focus:border-secondary outline-none py-3 px-4 bg-transparent">
+                <div class="g_id_signin"
+                    data-type="standard"
+                    data-size="large"
+                    data-theme="outline"
+                    data-text="signin_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
                 </div>
-                <p id="loginError" class="text-error text-sm hidden">Credenciales incorrectas</p>
-                <button type="submit" class="w-full bg-gradient-primary text-on-primary font-medium py-3 px-6 rounded-xl hover:opacity-90 transition-all">
-                    Ingresar
-                </button>
-            </form>
+                <p id="loginError" class="text-error text-sm hidden">Email no autorizado</p>
+            </div>
         </div>
     </div>
 
@@ -291,36 +294,41 @@
             }).join('');
         }
 
-        const VALID_USER = 'ClauHor';
-        const VALID_PASS = 'Titoysiri';
+        const AUTHORIZED_EMAILS = ['nehuen.martin.sj@gmail.com'];
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            
-            if (user === VALID_USER && pass === VALID_PASS) {
+        function handleCredentialResponse(response) {
+            const credential = response.credential;
+            const payload = JSON.parse(atob(credential.split('.')[1]));
+            const email = payload.email;
+
+            if (AUTHORIZED_EMAILS.includes(email.toLowerCase())) {
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('mainContent').classList.remove('hidden');
                 localStorage.setItem('adminLogged', 'true');
+                localStorage.setItem('adminEmail', email);
                 loadLeads();
             } else {
                 document.getElementById('loginError').classList.remove('hidden');
+                google.accounts.id.disableAutoSelect();
             }
-        });
-
-        if (localStorage.getItem('adminLogged') === 'true') {
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            loadLeads();
         }
 
         function logout() {
             localStorage.removeItem('adminLogged');
-            document.getElementById('loginScreen').classList.remove('hidden');
-            document.getElementById('mainContent').classList.add('hidden');
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
+            localStorage.removeItem('adminEmail');
+            google.accounts.id.disableAutoSelect();
+            location.reload();
+        }
+
+        if (localStorage.getItem('adminLogged') === 'true') {
+            const storedEmail = localStorage.getItem('adminEmail');
+            if (storedEmail && AUTHORIZED_EMAILS.includes(storedEmail.toLowerCase())) {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                loadLeads();
+            } else {
+                localStorage.removeItem('adminLogged');
+            }
         }
     </script>
 </body>
