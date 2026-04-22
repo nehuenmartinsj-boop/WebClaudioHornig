@@ -148,11 +148,18 @@
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body min-h-screen flex flex-col relative overflow-x-hidden">
+
+<!-- ============================================ -->
+<!-- FONDOS DECORATIVOS (Background blobs) -->
+<!-- ============================================ -->
 <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
     <div class="bg-blob-1"></div>
     <div class="bg-blob-2"></div>
 </div>
-<!-- TopNavBar -->
+
+<!-- ============================================ -->
+<!-- NAVEGACIÓN PRINCIPAL (TopNav) -->
+<!-- ============================================ -->
 <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md transition-all duration-300 ease-out">
 <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
 <div class="text-2xl font-headline font-bold text-primary dark:text-cyan-50">
@@ -183,7 +190,15 @@
 </div>
 </div>
 </nav>
+
+<!-- ============================================ -->
+<!-- CONTENIDO PRINCIPAL (Main) -->
+<!-- ============================================ -->
 <main class="w-full max-w-lg relative z-10 flex-grow pt-32 pb-24 mx-auto">
+
+<!-- ============================================ -->
+<!-- ENCABEZADO (Header) -->
+<!-- ============================================ -->
 <div class="text-center mb-12 slide-in">
 <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-error-container text-on-error-container text-sm font-medium mb-6">
 <span class="material-symbols-outlined text-lg">schedule</span>
@@ -196,6 +211,10 @@
         Unite a mas de <strong>500 personas</strong> que ya han transformado su vida. Tu momento de cambio comienza aqui.
       </p>
 </div>
+
+<!-- ============================================ -->
+<!-- LISTA DE BENEFICIOS (Grid de características) -->
+<!-- ============================================ -->
 <div class="grid gap-6 mb-12 slide-in delay-1">
 <div class="flex items-center gap-4 p-4 rounded-xl bg-white/60 backdrop-blur-sm">
 <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
@@ -229,16 +248,26 @@
 <span class="material-symbols-outlined text-tertiary">group</span>
 <span><strong>47</strong> personas ya registradas - solo <strong>3</strong> cupos disponibles</span>
 </div>
+
+<!-- ============================================ -->
+<!-- FORMULARIO DE REGISTRO -->
+<!-- ============================================ -->
 <div class="bg-surface-container-lowest rounded-xl editorial-shadow p-8 md:p-12 backdrop-blur-md bg-opacity-90">
         <form class="space-y-8" id="registrationForm">
+
+<!-- CAMPO: Nombre completo -->
 <div class="space-y-2 relative">
 <label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="name">Nombre y Apellido</label>
 <input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="name" name="name" placeholder="Ej. Maria Perez" required type="text">
 </div>
+
+<!-- CAMPO: Email -->
 <div class="space-y-2 relative">
 <label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="email">Correo electronico</label>
 <input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="email" name="email" placeholder="tu@correo.com" required type="email">
 </div>
+
+<!-- CAMPO: Teléfono (con código de país) -->
 <div class="space-y-2 relative">
 <label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="phone">Numero de telefono</label>
 <div class="flex">
@@ -253,10 +282,14 @@
 <input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="phone" name="phone" placeholder="123 456 7890" required type="tel">
 </div>
 </div>
+
+<!-- CAMPO: Ciudad -->
 <div class="space-y-2 relative">
 <label class="font-label text-sm text-on-surface-variant font-medium tracking-wide" for="ciudad">Ciudad</label>
 <input class="input-ghost w-full font-body text-on-surface text-base py-2 placeholder:text-outline-variant" id="ciudad" name="ciudad" placeholder="Santiago, Chile" required type="text">
 </div>
+
+<!-- BOTÓN DE ENVÍO -->
 <div class="pt-6">
 <button class="w-full bg-gradient-primary text-on-primary font-body font-medium text-lg py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 pulse-glow flex justify-center items-center gap-2" type="submit">
             <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">celebration</span>
@@ -281,7 +314,10 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
 </div>
 </div>
 </main>
-<!-- Footer -->
+
+<!-- ============================================ -->
+<!-- PIE DE PÁGINA (Footer) -->
+<!-- ============================================ -->
 <footer class="bg-surface-container-low py-12 px-8 mt-24">
 <div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
 <div class="text-xl font-headline font-bold text-primary dark:text-cyan-50">
