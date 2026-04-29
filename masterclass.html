@@ -60,6 +60,9 @@
                   "surface-container": "#eeeeee",
                   "tertiary-container": "#66441c",
                   "naranja-crema": "#F5D6B8",
+                  "naranja-medio": "#E8A96A",
+                  "naranja-vivo": "#D4824A",
+                  "naranja-oscuro": "#B85C2A",
                   "gris-claro": "#F0F0F0",
                   "gris-medio": "#E8E8E8"
           },
@@ -85,6 +88,9 @@
     .bg-gradient-primary {
       background: linear-gradient(135deg, #003857 0%, #1b4f72 100%);
     }
+    .bg-naranja-gradient {
+      background: linear-gradient(135deg, #E8A96A 0%, #D4824A 100%);
+    }
     .input-ghost {
       border: none;
       border-bottom: 1px solid rgba(193, 199, 207, 0.15); /* outline-variant at 15% */
@@ -105,7 +111,7 @@
       left: -10%;
       width: 50vw;
       height: 50vw;
-      background-color: #b9e9e0; /* secondary-container */
+      background-color: #F5D6B8; /* naranja-crema */
       border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
       filter: blur(80px);
       opacity: 0.4;
@@ -117,10 +123,10 @@
       right: -10%;
       width: 40vw;
       height: 40vw;
-      background-color: #ffdcbc; /* tertiary-fixed */
+      background-color: #E8A96A; /* naranja-medio */
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
       filter: blur(80px);
-      opacity: 0.3;
+      opacity: 0.25;
       z-index: -1;
     }
     .float-animation {
@@ -134,8 +140,8 @@
       animation: pulseGlow 2s ease-in-out infinite;
     }
     @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(185, 233, 224, 0.4); }
-      50% { box-shadow: 0 0 40px rgba(185, 233, 224, 0.8); }
+      0%, 100% { box-shadow: 0 0 20px rgba(232, 169, 106, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(212, 130, 74, 0.6); }
     }
     .slide-in {
       animation: slideIn 0.6s ease-out forwards;
@@ -170,7 +176,7 @@
 </div>
 <div class="hidden md:flex items-center gap-8 font-headline text-lg tracking-tight">
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
-<a class="text-primary border-b-2 border-secondary pb-1 hover:opacity-80 transition-all duration-300" href="masterclass.html">Masterclass</a>
+<a class="text-primary border-b-2 border-naranja-vivo pb-1 hover:opacity-80 transition-all duration-300" href="masterclass.html">Masterclass</a>
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="curso.html">Clases</a>
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="diplomados.html">Diplomados</a>
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="agenda.html">Sesión Individual</a>
@@ -187,7 +193,7 @@
 <div id="mobile-menu" class="hidden md:hidden fixed top-20 left-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-40 py-4">
 <div class="flex flex-col items-center gap-4 px-8">
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
-<a class="text-primary font-headline text-lg border-b-2 border-secondary pb-1" href="masterclass.html">Masterclass</a>
+<a class="text-primary font-headline text-lg border-b-2 border-naranja-vivo pb-1" href="masterclass.html">Masterclass</a>
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="curso.html">Clases</a>
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="diplomados.html">Diplomados</a>
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="agenda.html">Sesión Individual</a>
@@ -205,7 +211,7 @@
 <!-- ENCABEZADO (Header) -->
 <!-- ============================================ -->
 <div class="text-center mb-12 slide-in">
-<span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-error-container text-on-error-container text-sm font-medium mb-6">
+<span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-naranja-medio text-white text-sm font-medium mb-6">
 <span class="material-symbols-outlined text-lg">schedule</span>
 <span>Jueves 24 de Abril - 19:00 (GMT-5)</span>
 </span>
@@ -222,7 +228,7 @@
 <!-- ============================================ -->
 <div class="grid gap-6 mb-12 slide-in delay-1">
 <div class="flex items-center gap-4 p-4 rounded-xl bg-white/60 backdrop-blur-sm">
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-naranja-crema flex items-center justify-center text-naranja-oscuro flex-shrink-0">
 <span class="material-symbols-outlined">psychology</span>
 </div>
 <div>
@@ -231,7 +237,7 @@
 </div>
 </div>
 <div class="flex items-center gap-4 p-4 rounded-xl bg-white/60 backdrop-blur-sm">
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-naranja-medio flex items-center justify-center text-white flex-shrink-0">
 <span class="material-symbols-outlined">self_improvement</span>
 </div>
 <div>
@@ -240,7 +246,7 @@
 </div>
 </div>
 <div class="flex items-center gap-4 p-4 rounded-xl bg-white/60 backdrop-blur-sm">
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary flex-shrink-0">
+<div class="w-12 h-12 rounded-full bg-naranja-vivo flex items-center justify-center text-white flex-shrink-0">
 <span class="material-symbols-outlined">favorite</span>
 </div>
 <div>
@@ -250,7 +256,7 @@
 </div>
 </div>
 <div class="flex items-center justify-center gap-2 mb-8 text-sm text-on-surface-variant slide-in delay-2">
-<span class="material-symbols-outlined text-tertiary">group</span>
+<span class="material-symbols-outlined text-naranja-vivo">group</span>
 <span><strong>47</strong> personas ya registradas - solo <strong>3</strong> cupos disponibles</span>
 </div>
 
@@ -371,7 +377,7 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
 
         registrationForm.parentElement.innerHTML = `
           <div class="text-center py-12 space-y-6 animate-in fade-in zoom-in duration-500">
-            <div class="w-24 h-24 bg-secondary-container text-secondary rounded-full flex items-center justify-center mx-auto mb-4 float-animation">
+            <div class="w-24 h-24 bg-naranja-medio text-white rounded-full flex items-center justify-center mx-auto mb-4 float-animation">
               <span class="material-symbols-outlined text-6xl">celebration</span>
             </div>
             <div class="space-y-4">
@@ -383,14 +389,14 @@ Al registrarte, aceptas nuestra política de privacidad y recibir recordatorios 
                 Te hemos enviado un correo a <strong>${email}</strong> con los detalles para acceder a la clase en vivo.
               </p>
             </div>
-            <div class="mt-8 p-6 rounded-xl bg-error-container/30 border border-error-container">
-              <p class="text-sm text-on-error-container font-medium">
+            <div class="mt-8 p-6 rounded-xl bg-naranja-crema border border-naranja-medio/30">
+              <p class="text-sm text-naranja-oscuro font-medium">
                 <span class="material-symbols-outlined align-middle">lightbulb</span>
                 Pro tip: Unete 5 minutos antes para aprovechar al maximo!
               </p>
             </div>
             <div class="pt-6">
-              <a href="curso.html" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-primary text-on-primary font-medium hover:opacity-90 hover:shadow-lg transition-all duration-300">
+              <a href="curso.html" class="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-naranja-gradient text-white font-medium hover:opacity-90 hover:shadow-lg transition-all duration-300">
                 Ver las clases disponibles
                 <span class="material-symbols-outlined ml-2">school</span>
               </a>

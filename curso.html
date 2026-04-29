@@ -64,6 +64,9 @@
                         "primary-container": "#1b4f72",
                         "on-surface-variant": "#41474e",
                         "naranja-crema": "#F5D6B8",
+                        "naranja-medio": "#E8A96A",
+                        "naranja-vivo": "#D4824A",
+                        "naranja-oscuro": "#B85C2A",
                         "gris-claro": "#F0F0F0",
                         "gris-medio": "#E8E8E8"
                     },
@@ -87,6 +90,9 @@
         h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Noto Serif', serif; }
         .gradient-primary-btn {
             background: linear-gradient(135deg, #003857 0%, #1b4f72 100%);
+        }
+        .gradient-naranja-btn {
+            background: linear-gradient(135deg, #E8A96A 0%, #D4824A 100%);
         }
         .organic-shape {
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -113,7 +119,7 @@
 <nav class="hidden md:flex space-x-8 items-center font-headline tracking-tight text-lg">
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="masterclass.html">Masterclass</a>
-<a class="text-primary font-semibold border-b-2 border-secondary pb-1" href="curso.html">Clases</a>
+<a class="text-primary font-semibold border-b-2 border-naranja-vivo pb-1" href="curso.html">Clases</a>
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="diplomados.html">Diplomados</a>
 <a class="text-slate-600 hover:text-primary transition-all duration-300" href="agenda.html">Sesión Individual</a>
 </nav>
@@ -130,7 +136,7 @@
 <div class="flex flex-col items-center gap-4 px-8">
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="index.html">Inicio</a>
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="masterclass.html">Masterclass</a>
-<a class="text-primary font-headline text-lg border-b-2 border-secondary pb-1" href="curso.html">Clases</a>
+<a class="text-primary font-headline text-lg border-b-2 border-naranja-vivo pb-1" href="curso.html">Clases</a>
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="diplomados.html">Diplomados</a>
 <a class="text-slate-600 font-headline text-lg hover:text-primary transition-all duration-300" href="agenda.html">Sesión Individual</a>
 <a class="inline-flex items-center justify-center px-6 py-3 rounded-xl gradient-primary-btn text-on-primary font-medium mt-2" href="agenda.html">Reservar Cita</a>
@@ -143,10 +149,10 @@
 <!-- ============================================ -->
 <section class="pt-32 pb-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
 <!-- Decorative organic shape background -->
-<div class="absolute top-0 right-0 w-96 h-96 bg-secondary-container opacity-40 organic-shape -z-10 blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
-<div class="absolute bottom-0 left-0 w-64 h-64 bg-tertiary-fixed opacity-30 organic-shape -z-10 blur-2xl transform -translate-x-1/2 translate-y-1/2"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-naranja-crema opacity-40 organic-shape -z-10 blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-naranja-medio opacity-25 organic-shape -z-10 blur-2xl transform -translate-x-1/2 translate-y-1/2"></div>
 <div class="md:w-1/2 space-y-8 z-10">
-<span class="text-secondary font-medium tracking-wide uppercase text-sm">Curso Online Exclusivo</span>
+<span class="text-naranja-vivo font-medium tracking-wide uppercase text-sm">Curso Online Exclusivo</span>
 <h1 class="text-5xl md:text-6xl font-headline text-primary leading-tight tracking-tight">
                 El Camino de la Sanación
             </h1>
@@ -154,10 +160,10 @@
                 Un viaje guiado por Claudio Hornig para reconectar con tu esencia, liberar cargas del pasado y abrazar una vida de paz y plenitud emocional.
             </p>
 <div class="pt-4 flex flex-col sm:flex-row gap-4">
-<a class="gradient-primary-btn text-on-primary px-8 py-4 rounded-xl text-center font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" href="#pricing">
+<a class="gradient-naranja-btn text-white px-8 py-4 rounded-xl text-center font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" href="#pricing">
                     Inscribirme ahora
                 </a>
-<a class="px-8 py-4 rounded-xl text-center font-medium text-primary border border-outline-variant hover:bg-surface-container transition-colors duration-300" href="#curriculum">
+<a class="px-8 py-4 rounded-xl text-center font-medium text-naranja-oscuro border border-naranja-medio/40 hover:bg-naranja-crema transition-colors duration-300" href="#curriculum">
                     Ver el currículum
                 </a>
 </div>
@@ -201,11 +207,11 @@
 <img alt="Module 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract soft focus image of light filtering through green leaves, symbolizing new beginnings and inner child reconnection, calming atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCye7fjTYt3OWmAmHO4gGbqwhd7LpwdUGDh9X6nKpUnH-lVbM35DdR72ibWdyauKHn8UnF6FSDpI8zA63hslM2vrCrowlKaApJTOxJchTuAq_ACzQnZRqZxg5V3TsLXt5JqL3puzgpn60kbej9IcM0C8BYKYNUaLAskF8XPgAZyNCypcR1dW6tgLNIVRwh-1ry0klDczxixH09F5TTkygwR9p6bfjiQVzySvBmIqFLdYqa266f2l8DYORblFg8HMLyBImMwudDTF-A"/>
 </div>
 <div class="p-8 flex flex-col flex-grow">
-<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 1</span>
+<span class="text-naranja-vivo text-xs font-semibold uppercase tracking-wider mb-2">Módulo 1</span>
 <h3 class="font-headline text-xl text-primary mb-3 leading-snug">Reencuentro con el Niño Interior</h3>
 <p class="font-body text-sm text-on-surface-variant flex-grow">Aborda las heridas primarias y aprende a dialogar con esa parte tuya que necesita compasión y escucha activa.</p>
 <div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
-<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+<span class="material-symbols-outlined text-lg mr-2 text-naranja-medio">schedule</span>
                             1.5 Horas
                         </div>
 </div>
@@ -218,11 +224,11 @@
 <img alt="Module 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist abstract composition of broken chains morphing into birds flying free against a soft warm sunset sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKu2c5fo6UXI4DbcSlrT2hMfJ2XWzw2BzzY0sUMnOaB56T7Ggmbonfd_1QeE0xRmPcI-dUSIj0GC37bhCsULrpIXKg4XoE03_I6BjA2HUgdh8UpDr7H4OnZ_eDP16Msro3GnIYo03qDJAgoPN2DZhatH29O-YzppUOFuD09F-2B5t5ljP_KT_im2JBen2yuFZF4ogE9UiGP2JuaweUrIixn8pspBiRQzGDxTbr33ENmLcf1gAKgIFh5tWK-nMMmSlZTksy8QBGEXo"/>
 </div>
 <div class="p-8 flex flex-col flex-grow">
-<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 2</span>
+<span class="text-naranja-vivo text-xs font-semibold uppercase tracking-wider mb-2">Módulo 2</span>
 <h3 class="font-headline text-xl text-primary mb-3 leading-snug">Rompiendo Cadenas del Pasado</h3>
 <p class="font-body text-sm text-on-surface-variant flex-grow">Identifica y disuelve los patrones heredados y creencias limitantes que obstaculizan tu bienestar actual.</p>
 <div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
-<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+<span class="material-symbols-outlined text-lg mr-2 text-naranja-medio">schedule</span>
                             2.0 Horas
                         </div>
 </div>
@@ -235,11 +241,11 @@
 <img alt="Module 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of rippling water with a single drop hitting the surface creating concentric circles, deep calm blue and sage tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZLr2EcBEgpCh1hq5Ct_0iz1fcrxzkjXmVvD4jMCQ3StytXGWEn3c-FxhmE5bvjR-NaSiOmFehTkzwc9owpg6f0txkzlXGz4KnA3B2YkZirivtRix3Qdo63lAe4iFImpNGjmKEGyf0dA62K-o2LS6lzYpGQTa0WGHTWJWFmLZ5sES4IOjXj9oQOlv6wfVzHws-UnCePIgLTVG9CEzqjj0qMw98KwXr9DvY_ZfOE20zuI69jRf1cNJ8QRLttTjgwCNYH7s0_tFTaig"/>
 </div>
 <div class="p-8 flex flex-col flex-grow">
-<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 3</span>
+<span class="text-naranja-vivo text-xs font-semibold uppercase tracking-wider mb-2">Módulo 3</span>
 <h3 class="font-headline text-xl text-primary mb-3 leading-snug">La Alquimia del Perdón</h3>
 <p class="font-body text-sm text-on-surface-variant flex-grow">Aprende que perdonar no es olvidar, sino liberarte del peso emocional para recuperar tu energía vital.</p>
 <div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
-<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+<span class="material-symbols-outlined text-lg mr-2 text-naranja-medio">schedule</span>
                             1.5 Horas
                         </div>
 </div>
@@ -252,11 +258,11 @@
 <img alt="Module 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Gentle ocean waves washing over smooth stones on a serene beach, soft pastel twilight colors, peaceful and grounding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwv6bbSSb7V-0pmUHpRlhfrlwCXNAl5UvUhQGJVKPS-zgMcvms1gUPNV1fRD5_M9_vUFJzEEz8M7dr0BXVY1xng_EZJIGi8SBsWpe0h4dPHixDQqKoOY8-dSL0vyFF7QFVogF4ctcziFyllDuFsNHFmA9sxn7qPwLWtsdxb2g-Kss7wKO-al1-nMKaO4V1BRWEPABOowXafzIIMI0zAE2lluU1-FAQFtPd0KArAMP_SSVnpjat3Aol2qIRVLBONnl_AnfTzdlIW7Q"/>
 </div>
 <div class="p-8 flex flex-col flex-grow">
-<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 4</span>
+<span class="text-naranja-vivo text-xs font-semibold uppercase tracking-wider mb-2">Módulo 4</span>
 <h3 class="font-headline text-xl text-primary mb-3 leading-snug">Gestión de la Ansiedad</h3>
 <p class="font-body text-sm text-on-surface-variant flex-grow">Técnicas somáticas y herramientas prácticas para anclarte en el presente cuando la mente se acelera.</p>
 <div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
-<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+<span class="material-symbols-outlined text-lg mr-2 text-naranja-medio">schedule</span>
                             2.5 Horas
                         </div>
 </div>
@@ -269,11 +275,11 @@
 <img alt="Module 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sunlight illuminating a solitary tree standing strong in a misty valley, symbolizing resilience and self discovery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSlm0nAG26FF6BM66ohFENJfnrFxzxq1lkXGngWwQdultgq5LWd-DrLOFzXOaICZ_4OYivZ7et6gEAhu-ga6KmNMOs_LIlYMvXkUe0SWiA6KhCsZeTmuSLv95G0c_gJV_nWuDfm5dQpk8iDA8DswO3-Mf1E4iaePzPF716VuaHuEBv1iqRVWqhpTi9FdYMTPxmdJ0rH5qSwn1yR8rhLjbiEf7u1ynme8INGcv3QAS8FcuvBzESlGs6AJpGosul7P7O1Nf4YSyccpc"/>
 </div>
 <div class="p-8 flex flex-col flex-grow">
-<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 5</span>
+<span class="text-naranja-vivo text-xs font-semibold uppercase tracking-wider mb-2">Módulo 5</span>
 <h3 class="font-headline text-xl text-primary mb-3 leading-snug">Redescubriendo el Amor Propio</h3>
 <p class="font-body text-sm text-on-surface-variant flex-grow">Cultiva una relación de respeto y nutrición contigo mismo, estableciendo límites sanos sin culpa.</p>
 <div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
-<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+<span class="material-symbols-outlined text-lg mr-2 text-naranja-medio">schedule</span>
                             2.0 Horas
                         </div>
 </div>
@@ -286,11 +292,11 @@
 <img alt="Module 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract soft focus horizon line where calm water meets sky, seamless blending of muted blues and sage greens, expansive and open" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvUve4li4gb-lP51VNaG6BYc7y9bbO493Z3M3ibw7KSQaKV8I330kSZytJ6MhBvoABXrWnyVaCHqNaQHUag1O2sQSkFtUfaLHhsk3pGCMLnhFujDYpk3eCao2lvwgUrYl76jqeZD7FOkypykxtsIMZWuRj_yt5MDZxQV5mORr9YMQvDkTt-H55WAScPDyWoJgzISv1gfeKhvBSSrKUcs8QAKkrmhZK2ydh98XJh50-rUB_Ml3GPF_axNt-Vuf2bxQk_GC7jUES3Jg"/>
 </div>
 <div class="p-8 flex flex-col flex-grow">
-<span class="text-secondary text-xs font-semibold uppercase tracking-wider mb-2">Módulo 6</span>
+<span class="text-naranja-vivo text-xs font-semibold uppercase tracking-wider mb-2">Módulo 6</span>
 <h3 class="font-headline text-xl text-primary mb-3 leading-snug">Integración y Propósito</h3>
 <p class="font-body text-sm text-on-surface-variant flex-grow">Consolida tu aprendizaje y traza un mapa claro para sostener tu bienestar emocional a largo plazo.</p>
 <div class="mt-6 flex items-center text-outline text-sm font-medium border-t border-outline-variant/20 pt-4">
-<span class="material-symbols-outlined text-lg mr-2 text-secondary">schedule</span>
+<span class="material-symbols-outlined text-lg mr-2 text-naranja-medio">schedule</span>
                             1.5 Horas
                         </div>
 </div>
@@ -304,22 +310,22 @@
 <!-- ============================================ -->
 <section class="py-32 px-8 bg-surface relative overflow-hidden" id="pricing">
 <!-- Accent blur -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary-container opacity-20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-naranja-crema opacity-25 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 <div class="max-w-4xl mx-auto flex flex-col lg:flex-row bg-surface-container-lowest rounded-3xl ambient-shadow overflow-hidden border border-outline-variant/10">
 <div class="p-12 lg:w-3/5 flex flex-col justify-center">
 <h2 class="text-3xl md:text-4xl font-headline text-primary mb-4">Comienza tu transformación hoy</h2>
 <p class="font-body text-on-surface-variant mb-8 leading-relaxed">Acceso de por vida a los 6 módulos, materiales de apoyo descargables, y entrada a nuestra comunidad privada de estudiantes.</p>
 <ul class="space-y-4 mb-8">
 <li class="flex items-start">
-<span class="material-symbols-outlined text-secondary mr-3 mt-0.5">check_circle</span>
+<span class="material-symbols-outlined text-naranja-vivo mr-3 mt-0.5">check_circle</span>
 <span class="font-body text-sm text-on-surface">Más de 10 horas de contenido en video HD</span>
 </li>
 <li class="flex items-start">
-<span class="material-symbols-outlined text-secondary mr-3 mt-0.5">check_circle</span>
+<span class="material-symbols-outlined text-naranja-vivo mr-3 mt-0.5">check_circle</span>
 <span class="font-body text-sm text-on-surface">Ejercicios guiados de introspección</span>
 </li>
 <li class="flex items-start">
-<span class="material-symbols-outlined text-secondary mr-3 mt-0.5">check_circle</span>
+<span class="material-symbols-outlined text-naranja-vivo mr-3 mt-0.5">check_circle</span>
 <span class="font-body text-sm text-on-surface">Acceso desde cualquier dispositivo, a tu ritmo</span>
 </li>
 </ul>
@@ -330,8 +336,8 @@
 <span class="text-5xl font-headline font-bold">$147</span>
 <span class="text-lg ml-2 font-medium">USD</span>
 </div>
-<p class="text-secondary font-medium text-sm mb-8 bg-secondary-container/50 px-4 py-1.5 rounded-full inline-block">Oferta especial de lanzamiento</p>
-<a class="w-full gradient-primary-btn text-on-primary px-8 py-4 rounded-xl text-center font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" href="checkout.html">
+<p class="text-naranja-oscuro font-medium text-sm mb-8 bg-naranja-crema/50 px-4 py-1.5 rounded-full inline-block">Oferta especial de lanzamiento</p>
+<a class="w-full gradient-naranja-btn text-white px-8 py-4 rounded-xl text-center font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1" href="checkout.html">
                     Inscribirme ahora
                 </a>
 <p class="text-xs text-outline mt-4">Garantía de devolución de 14 días.</p>
