@@ -245,6 +245,10 @@
                             <input class="w-full bg-transparent ghost-input py-3 text-on-surface placeholder:text-outline focus:ring-0" id="phone" placeholder="Teléfono de contacto" required="" type="tel"/>
                         </div>
                         <div>
+                            <label class="sr-only" for="rut">Cédula / RUT</label>
+                            <input class="w-full bg-transparent ghost-input py-3 text-on-surface placeholder:text-outline focus:ring-0" id="rut" placeholder="Cédula / RUT" required="" type="text"/>
+                        </div>
+                        <div>
                             <label class="sr-only" for="ciudad">Ciudad</label>
                             <input class="w-full bg-transparent ghost-input py-3 text-on-surface placeholder:text-outline focus:ring-0" id="ciudad" placeholder="Ciudad" required="" type="text"/>
                         </div>
@@ -358,7 +362,7 @@
             }
             const dayName = daysOfWeek[selectedDate.getDay() === 0 ? 6 : selectedDate.getDay() - 1];
             selectedDateTitle.textContent = `Horarios para el ${dayName} ${selectedDate.getDate()}`;
-            const slots = ["09:00", "10:30", "12:00", "15:00", "16:30", "18:00"];
+            const slots = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"];
             timeSlotsContainer.innerHTML = '';
             slots.forEach(time => {
                 const button = document.createElement('button');
@@ -388,6 +392,7 @@
                 nombre: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 telefono: document.getElementById('phone').value,
+                rut: document.getElementById('rut').value,
                 ciudad: document.getElementById('ciudad').value,
                 motivo: document.getElementById('reason').value,
                 fecha: selectedDate.toLocaleDateString() + ' ' + selectedTime
@@ -397,6 +402,7 @@
                 nombre: formData.nombre,
                 email: formData.email,
                 telefono: formData.telefono,
+                rut: formData.rut,
                 ciudad: formData.ciudad,
                 motivo: formData.motivo
             }, 'agenda');
