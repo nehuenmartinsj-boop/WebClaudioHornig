@@ -177,6 +177,12 @@
                                 class="w-full bg-surface border-b border-outline-variant/30 focus:border-naranja-vivo outline-none py-3 px-4 rounded-t-lg transition-colors text-on-surface placeholder-outline"
                                 id="checkoutPhone" placeholder="+56 9 1234 5678" required="" type="tel" />
                         </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-sm font-medium text-on-surface-variant mb-2 ml-1">Cédula / RUT</label>
+                            <input
+                                class="w-full bg-surface border-b border-outline-variant/30 focus:border-naranja-vivo outline-none py-3 px-4 rounded-t-lg transition-colors text-on-surface placeholder-outline"
+                                id="checkoutRut" placeholder="12.345.678-9" required="" type="text" />
+                        </div>
                     </div>
                 </section>
 
@@ -353,12 +359,14 @@
                     const name = document.getElementById('checkoutName').value;
                     const email = document.getElementById('checkoutEmail').value;
                     const phone = document.getElementById('checkoutPhone').value;
+                    const rut = document.getElementById('checkoutRut').value;
 
                     await saveToDatabase({
                         origen: 'checkout',
                         nombre: name,
                         email: email,
                         telefono: phone,
+                        rut: rut,
                         motivo: '',
                         producto: 'The Journey Curriculum'
                     }, 'checkout');

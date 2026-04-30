@@ -14,7 +14,8 @@ const FIELD_MAP = {
     checkout: {
         nombre: 'entry.2009859634',
         email: 'entry.1180103440',
-        telefono: 'entry.190249211'
+        telefono: 'entry.190249211',
+        rut: 'entry.122704312'
     },
     agenda: {
         nombre: 'entry.274453835',
