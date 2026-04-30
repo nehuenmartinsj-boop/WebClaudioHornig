@@ -9,7 +9,7 @@ const FIELD_MAP = {
         nombre: 'entry.1131854161',
         email: 'entry.601882798',
         telefono: 'entry.1650002445',
-        ciudad: 'entry.1234567890'
+        ciudad: 'entry.996912712'
     },
     checkout: {
         nombre: 'entry.2009859634',
