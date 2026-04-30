@@ -20,6 +20,7 @@ const FIELD_MAP = {
         nombre: 'entry.274453835',
         email: 'entry.1187255089',
         telefono: 'entry.41779768',
+        rut: 'entry.199259602',
         ciudad: 'entry.9876543210',
         motivo: 'entry.355106775',
         fecha: 'entry.402920034'
