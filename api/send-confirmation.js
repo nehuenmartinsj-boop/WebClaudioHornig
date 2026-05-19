@@ -23,16 +23,17 @@ module.exports = async function handler(req, res) {
     const data = await resend.emails.send({
       from: 'Claudio Hornig <onboarding@resend.dev>',
       to: [email],
-      subject: 'Confirmación de registro - Masterclass Sanación Emocional',
+      subject: 'Confirmación de registro - Masterclass "El Precio de estar en paz"',
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h1 style="color: #003857;">¡Hola ${name.split(' ')[0]}!</h1>
-          <p>Gracias por registrarte en la Masterclass <strong>"Sanación Emocional Profunda"</strong>.</p>
-          <p>Tu lugar ha sido reservado exitosamente.</p>
+          <p>Gracias por registrarte en la Masterclass:<br><strong style="font-size: 18px; color: #D4824A;">"El Precio de estar en paz"</strong></p>
+          <p style="font-style: italic; color: #555; margin-top: -10px;">"Descubre lo que nadie te cuenta sobre elegir tu tranquilidad"</p>
+          <p>Tu lugar ha sido reservado exitosamente. Prepárate para una sesión reflexiva y transformadora.</p>
           <div style="background: #f3f3f3; padding: 20px; border-radius: 10px; margin: 20px 0;">
-            <p style="margin: 0;"><strong>Fecha:</strong> 25 de Abril de 2026</p>
-            <p style="margin: 10px 0;"><strong>Hora:</strong> 18:00 (Hora de Chile)</p>
-            <p style="margin: 0;"><strong>Plataforma:</strong> Google Meet</p>
+            <p style="margin: 0;"><strong>Fecha:</strong> 20 de Mayo de 2026</p>
+            <p style="margin: 10px 0;"><strong>Hora:</strong> 20:00 (Hora de Chile)</p>
+            <p style="margin: 0;"><strong>Plataforma:</strong> Google Meet (Acceso Gratuito)</p>
           </div>
           <p><strong>Enlace de acceso:</strong> <a href="${MASTERCLASS_MEET_LINK}" style="color: #39665f;">${MASTERCLASS_MEET_LINK}</a></p>
           <p>Te recomendamos unirte 5 minutos antes del inicio.</p>
